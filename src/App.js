@@ -5,36 +5,36 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
-import { AppStyles } from "./App.styled";
-import HomePage from './components/HomePage/HomePage.js'; 
+import { ThemeProvider } from 'styled-components'; 
+import { theme, GlobalStyles} from "App.styled";
+import {CoinsPage, CoinPage, PortfolioPage} from 'components'; 
 
 export default function App() {
   return (
-    <Router>
-      <AppStyles>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <GlobalStyles />
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Coins</Link>
+              </li>
+              <li>
+                <Link to="/portfolio">Portoflio</Link>
+              </li>
+              <li>
+                <Link to="/coin">Coin</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-
-      </AppStyles>
-    </Router>
+          <Routes>
+            <Route path="/" element={<CoinsPage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/coin" element={<CoinPage />} />
+          </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
