@@ -1,9 +1,9 @@
 import React from 'react'
 
-const PortfolioPage = () => {
+function PortfolioPage() {
   return (
-    <h1>PortfolioPage</h1>
+    <div>PortfolioPage</div>
   )
 }
 
-export default PortfolioPage;
+export default PortfolioPage

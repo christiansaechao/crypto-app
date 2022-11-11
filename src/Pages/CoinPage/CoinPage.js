@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CoinPage = () => {
+function CoinPage() {
   return (
-    <h1>CoinPage</h1>
+    <div>CoinPage</div>
   )
 }
 
