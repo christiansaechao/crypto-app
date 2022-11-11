@@ -2,37 +2,23 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { ThemeProvider } from 'styled-components'; 
 import { theme, GlobalStyles} from "App.styled";
-import {CoinsPage, CoinPage, PortfolioPage} from 'components'; 
+import {CoinsPage, CoinPage, PortfolioPage, Navbar} from 'Pages'; 
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <GlobalStyles />
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Coins</Link>
-              </li>
-              <li>
-                <Link to="/portfolio">Portoflio</Link>
-              </li>
-              <li>
-                <Link to="/coin">Coin</Link>
-              </li>
-            </ul>
-          </nav>
-
-          <Routes>
-            <Route path="/" element={<CoinsPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/coin" element={<CoinPage />} />
-          </Routes>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<CoinsPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/coin" element={<CoinPage />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   );
