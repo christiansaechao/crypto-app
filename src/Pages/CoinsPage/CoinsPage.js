@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class Coins extends React.Component{
-  render(){
+export default class CoinsPage extends Component {
+  render() {
     return (
-      <h1>This is Coins Page</h1>
+      <div>CoinsPage</div>
     )
   }
 }
-
-export default Coins; 
