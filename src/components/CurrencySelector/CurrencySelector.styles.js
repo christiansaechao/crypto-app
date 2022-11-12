@@ -1,7 +1,7 @@
 import styled from 'styled-components'; 
 
 export const CurrencySelectorContainer = styled.div`
-    background-color: #2c2f36; 
+    background-color: ${props => props.theme.main};  
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -11,7 +11,7 @@ export const CurrencySelectorContainer = styled.div`
 `; 
 export const DollarSymbol = styled.div`
     color: green; 
-    background: black; 
+    background: ${props => props.theme.secondary}; 
     width: 25px; 
     height: 25px;
     border-radius: 50%;
@@ -21,7 +21,7 @@ export const DollarSymbol = styled.div`
     margin-right: 5px;
 `; 
 export const Currency = styled.div`
-    color: white; 
+    color: ${props => props.theme.textColor}; 
     margin-right: 5px;
 `; 
 export const Carot = styled.div `
