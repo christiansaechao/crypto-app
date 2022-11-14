@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const CoinPage = () => {
-  return (
-    <h1>CoinPage</h1>
-  )
+export default class CoinPage extends Component {
+  render() {
+    return (
+      <div>CoinPage</div>
+    )
+  }
 }
-
-export default CoinPage;

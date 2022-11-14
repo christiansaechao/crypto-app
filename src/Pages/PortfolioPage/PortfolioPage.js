@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'; 
 
-const PortfolioPage = () => {
-  return (
-    <h1>PortfolioPage</h1>
-  )
+export default class PortfolioPage extends Component {
+  render() {
+    return (
+      <div>PortfolioPage</div>
+    )
+  }
 }
-
-export default PortfolioPage;

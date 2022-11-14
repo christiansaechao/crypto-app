@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 
 export const NavbarContainer = styled.div`
-    background: #191b1f;
+    background: ${props => props.theme.secondary}; 
     height: 50px; 
     display: flex; 
     justify-content: space-between; 
@@ -17,7 +17,7 @@ export const LeftNav = styled.div`
 export const StyledLink = styled(Link)`
     text-decoration: none; 
     font-size: 22px; 
-    color: #fafbfb; 
+    color: ${props => props.theme.textColor} 
     letter-spacing: 0; 
     padding: 10px 40px; 
     text-align: center;
@@ -25,8 +25,12 @@ export const StyledLink = styled(Link)`
 
     //--- change this onHover to when the page is selected later on ---
     &:hover{
-        background: #2c2f36; 
+        background: ${props => props.theme.main}; 
     }
+    &:visited { 
+        text-decoration: none; 
+        color: ${props => props.theme.textColor}; 
+       }
 `; 
 export const RightNav = styled.div`
     display: flex; 

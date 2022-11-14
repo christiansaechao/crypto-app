@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SearchContainer = styled.div`
     width: 270px; 
-    background: #2c2f36; 
+    background: ${props => props.theme.main};
     display: flex; 
     justify-content: start; 
     align-items: center; 
@@ -17,8 +17,8 @@ export const SearchIcon = styled.img`
 export const SearchField = styled.input`
     width: 100%; 
     border: none; 
-    background: #2c2f36;
-    color: white; 
+    background: ${props => props.theme.main};
+    color: ${props => props.theme.textColor}; 
     font-size: 17px; 
 
     &:focus {

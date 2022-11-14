@@ -2,9 +2,9 @@ import React from 'react'
 import { ThemeChangerIcon } from './ThemeChanger.styles'; 
 import icon from '../../images/ThemeChanger.png'; 
 
-const ThemeChanger = () => {
+const ThemeChanger = (props) => {
   return (
-    <ThemeChangerIcon src={icon} />
+    <ThemeChangerIcon src={icon} onClick={() => props.handleThemeChange() } />
   )
 }
 
