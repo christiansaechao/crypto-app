@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios'; 
-import {CoinsContainer} from './CoinsPage.styles'; 
+import { CoinsContainer } from './CoinsPage.styles'; 
 import CoinsTable from '../../components/CoinsTable/CoinsTable'; 
+import LandingPageCharts from '../../components/LandingPageCharts/LandingPageCharts'; 
 
 export default class CoinsPage extends Component { 
   state = {
     coinsData: null,
     coinsPerPage: 5,
+    chartsData: null,
+    numDays: 30
   }
 
   getCoinsData = async () => {
@@ -22,18 +25,30 @@ export default class CoinsPage extends Component {
     }
   };
 
-  componentDidUpdate(){
-  }
+  getChartsData = async () => {
+    try {
+      const { data } = await axios(
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=${this.state.numDays}&interval=daily`
+      );
+      this.setState({
+        chartsData: data
+      });
+    } catch (err) {
+      console.log(err.error); 
+    }
+  };
 
   componentDidMount(){
     this.getCoinsData(); 
+    this.getChartsData(); 
   }
 
   render() {
-    const {coinsData} = this.state; 
+    const { coinsData, chartsData} = this.state; 
 
     return (
       <CoinsContainer>
+        <LandingPageCharts chartsData={chartsData} />
         <CoinsTable coinsData={coinsData} />
       </CoinsContainer>
     )
