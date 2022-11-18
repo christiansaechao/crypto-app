@@ -40,10 +40,10 @@ class CoinsTable extends React.Component {
                                 <CoinsTableTD>{coin.price_change_percentage_1h_in_currency.toFixed(2)}</CoinsTableTD>
                                 <CoinsTableTD>{coin.price_change_percentage_24h_in_currency.toFixed(2)}</CoinsTableTD>
                                 <CoinsTableTD>{coin.price_change_percentage_7d_in_currency.toFixed(2)}</CoinsTableTD>
-                                <CoinsTableTD>{coin.total_volume.toFixed(2)}</CoinsTableTD>
-                                <CoinsTableTD>{coin.market_cap.toFixed(2)}</CoinsTableTD>
+                                <CoinsTableTD>{coin.total_volume.toLocaleString()}</CoinsTableTD>
+                                <CoinsTableTD>{coin.market_cap.toLocaleString()}</CoinsTableTD>
                                 <CoinsTableTD>{
-                                    coin.circulating_supply === coin.total_supply ? Math.trunc(coin.circulating_supply) : Math.trunc(coin.circulating_supply) + "/" + Math.trunc(coin.total_supply)
+                                    coin.circulating_supply === coin.total_supply ? Math.trunc(coin.circulating_supply).toLocaleString() : Math.trunc(coin.circulating_supply).toLocaleString() + "/" + Math.trunc(coin.total_supply).toLocaleString()
                                     }
                                     </CoinsTableTD>
                                 {/* implementing sparkline graph later <CoinsTableTD>{coin.sparkline_in_7d}</CoinsTableTD> */}
@@ -57,9 +57,5 @@ class CoinsTable extends React.Component {
     );
   }
 }
-
-// {coinsData.map((coin) => {
-//     return <div>{coin.id}</div>
-// })}
 
 export default CoinsTable;
