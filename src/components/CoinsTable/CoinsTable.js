@@ -35,7 +35,7 @@ class CoinsTable extends React.Component {
                         return (
                             <CoinsTableRow key={coin.id}>
                                 <CoinsTableTD>{index}</CoinsTableTD>
-                                <CoinsTableTD><CoinImage src={coin.image}/>{coin.name}</CoinsTableTD>
+                                <CoinsTableTD className='img-name'><CoinImage src={coin.image}/>{coin.name}</CoinsTableTD>
                                 <CoinsTableTD>{coin.current_price}</CoinsTableTD>
                                 <CoinsTableTD>{coin.price_change_percentage_1h_in_currency.toFixed(2)}</CoinsTableTD>
                                 <CoinsTableTD>{coin.price_change_percentage_24h_in_currency.toFixed(2)}</CoinsTableTD>
