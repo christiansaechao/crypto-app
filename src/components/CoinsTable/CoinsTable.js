@@ -38,7 +38,7 @@ class CoinsTable extends React.Component {
               {coinsData.map((coin, index) => {
                 return (
                   <CoinsTableRow key={coin.id}>
-                    <CoinsTableTD>{index}</CoinsTableTD>
+                    <CoinsTableTD>{index + 1}</CoinsTableTD>
                     <CoinsTableTD className="img-name">
                       <CenterElements>
                         <CoinImage src={coin.image} />

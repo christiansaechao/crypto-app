@@ -12,7 +12,6 @@ export const CoinsTableContainer = styled.table`
 `;
 
 export const CoinsTableHead = styled.thead`
-
 `;
 
 export const CoinsTableRow = styled.tr`
