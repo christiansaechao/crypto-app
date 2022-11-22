@@ -29,7 +29,7 @@ export default class CoinsPage extends Component {
   getChartsData = async () => {
     try {
       const { data } = await axios(
-        `${URL}bitcoin/market_chart?vs_currency=usd&days=${this.state.numDays}&interval=daily`
+        `${URL}bitcoin/market_chart?vs_currency=${this.props.selectedCurrency}&days=${this.state.numDays}&interval=daily`
       );
       this.setState({
         chartsData: data
@@ -41,7 +41,8 @@ export default class CoinsPage extends Component {
 
   componentDidUpdate(prevProps){
     if(this.props.selectedCurrency !== prevProps.selectedCurrency){
-      this.getCoinsData(); 
+      this.getCoinsData();
+      this.getChartsData(); 
     }
   }
 
