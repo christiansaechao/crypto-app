@@ -8,9 +8,11 @@ export const CurrencySelectorContainer = styled.div`
     padding: 5px; 
     border-radius: 10px; 
     margin-right: 20px; 
+    cursor: pointer;
+    position: relative; 
 `; 
 export const DollarSymbol = styled.div`
-    color: green; 
+    color: #02EC29; 
     background: ${props => props.theme.secondary}; 
     width: 25px; 
     height: 25px;
@@ -25,5 +27,5 @@ export const Currency = styled.div`
     margin-right: 5px;
 `; 
 export const Carot = styled.div `
-    color: green; 
+    color: #02EC29; 
 `; 

@@ -23,7 +23,6 @@ ChartJS.register(
 export class LandingPageCharts extends Component {
   render() {
     const { chartsData } = this.props;
-    console.log(chartsData); 
 
     return (
       <>

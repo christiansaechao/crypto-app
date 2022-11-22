@@ -7,7 +7,7 @@ import ThemeChanger from '../ThemeChanger/ThemeChanger';
 
 export default class Navbar extends Component {
   render(){ 
-    const {handleThemeChange} = this.props; 
+    const {handleThemeChange, handleCurrencyChange} = this.props; 
 
     return (
       <NavbarContainer>
@@ -17,7 +17,7 @@ export default class Navbar extends Component {
         </LeftNav>
         <RightNav>
           <SearchBar />
-          <CurrencySelector />
+          <CurrencySelector handleCurrencyChange={handleCurrencyChange}/>
           <ThemeChanger handleThemeChange={handleThemeChange}/>
         </RightNav>
       </NavbarContainer>
