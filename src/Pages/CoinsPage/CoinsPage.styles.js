@@ -1,3 +1,4 @@
 import styled from 'styled-components'; 
 
-export const CoinsContainer = styled.div``; 
+export const CoinsContainer = styled.div`
+`; 
