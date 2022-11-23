@@ -8,7 +8,7 @@ const URL = "https://api.coingecko.com/api/v3/coins/";
 export default class CoinsPage extends Component {
   state = {
     coinsData: [],
-    coinsPerPage: 100,
+    coinsPerPage: 5,
     pageNum: 1,
     chartsData: null,
     numDays: 30,
