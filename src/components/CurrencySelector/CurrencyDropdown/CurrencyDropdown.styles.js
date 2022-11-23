@@ -4,7 +4,8 @@ export const Dropdown = styled.div`
     margin-top: 20px;
     position: absolute; 
     top: 0;
-    left: -33px; 
+    left: -33px;
+    z-index: 3;
 `; 
 
 export const ListContainer = styled.ol`

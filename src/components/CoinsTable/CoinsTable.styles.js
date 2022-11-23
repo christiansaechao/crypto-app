@@ -26,14 +26,14 @@ export const CoinsTableTH = styled.th`
 `;
 
 export const CoinsTableBody = styled.tbody`
-padding: 20px; 
+  padding: 20px; 
 `;
 
 export const CoinsTableTD = styled.td`
     text-align: left;
     font-weight: 400;
     border-bottom: 3px solid #707070; 
-    padding: 20px;
+    padding: 20px 0; 
 
     & .spark-line{
       height: 50px;
