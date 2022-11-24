@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import CoinPageDetails from 'components/CoinPageDetails/CoinPageDetails';
 
 export default class CoinPage extends Component {
   render() {
     return (
-      <div>CoinPage</div>
+      <CoinPageDetails>CoinPage</CoinPageDetails>
     )
   }
 }
