@@ -21,7 +21,7 @@ export const CoinsTableTH = styled.th`
     font-size: 1.2rem;
     text-align: left; 
     font-weight: 400;
-    padding: 10px 20px;
+    padding: 10px 0;
     border-bottom: 2px solid white; 
 `;
 
