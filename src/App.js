@@ -42,7 +42,7 @@ export default class App extends Component {
           <Routes>
             <Route path="/" element={<CoinsPage selectedCurrency={selectedCurrency} />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/coin" element={<CoinPage />} />
+            <Route path="/coin" element={<CoinPage selectedCurrency={selectedCurrency} />} />
           </Routes>
         </Router>
       </ThemeProvider>
