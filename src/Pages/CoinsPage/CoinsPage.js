@@ -10,7 +10,7 @@ export default class CoinsPage extends Component {
   state = {
     coinsData: [],
     coinsPerPage: 20,
-    pageNum: 1,
+    pageNum: 0,
     chartsData: null,
     numDays: 30,
     hasMoreItems: true,
