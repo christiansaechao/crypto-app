@@ -9,6 +9,7 @@ import {
   CoinsTableTD,
   CoinImage,
   CenterElements,
+  StyledLink
 } from "./CoinsTable.styles";
 import Sparkline from "./Sparkline/Sparkline";
 import ProgressBar from '../ProgressBar/ProgressBar'; 
@@ -42,7 +43,7 @@ class CoinsTable extends React.Component {
                     <CoinsTableTD className="img-name">
                       <CenterElements>
                         <CoinImage src={coin.image} />
-                        {coin.name}
+                        <StyledLink to={`coin/${coin.id}`}>{coin.name}</StyledLink>
                       </CenterElements>
                     </CoinsTableTD>
                     <CoinsTableTD>

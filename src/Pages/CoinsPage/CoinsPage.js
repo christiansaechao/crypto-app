@@ -22,7 +22,6 @@ export default class CoinsPage extends Component {
         `${URL}markets?vs_currency=${this.props.selectedCurrency}&order=market_cap_desc&per_page=${this.state.coinsPerPage}&page=${this.state.pageNum}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
       );
       this.setState({ coinsData: [...this.state.coinsData, ...data] });
-      console.log(this.state);
     } catch (err) {
       console.log(err.error);
     }
