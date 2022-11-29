@@ -10,7 +10,7 @@ export default class CoinsPage extends Component {
   state = {
     coinsData: [],
     coinsPerPage: 20,
-    pageNum: 0,
+    pageNum: 1,
     chartsData: null,
     numDays: 30,
     hasMoreItems: true,
@@ -41,10 +41,6 @@ export default class CoinsPage extends Component {
     }
   };
 
-  updatePageNum = () => {
-    this.setState({ pageNum: this.state.pageNum + 1 });
-  };
-
   componentDidUpdate(prevProps, prevState) {
     if (this.props.selectedCurrency !== prevProps.selectedCurrency) {
       this.getCoinsData();
@@ -70,7 +66,7 @@ export default class CoinsPage extends Component {
             <LandingPageCharts chartsData={chartsData} />
             <InfiniteScroll
               dataLength={coinsData.length}
-              next={this.updatePageNum}
+              next={() => this.setState({pageNum: this.state.pageNum + 1}) }
               hasMore={hasMoreItems}
               loader={<h4>Loading...</h4>}
             >
