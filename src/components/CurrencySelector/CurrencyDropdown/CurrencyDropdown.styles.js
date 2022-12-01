@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Dropdown = styled.div`
     margin-top: 20px;
     position: absolute; 
-    top: 0;
-    left: -33px;
+    top: -30px;
+    left: 60px;
     z-index: 3;
 `; 
 

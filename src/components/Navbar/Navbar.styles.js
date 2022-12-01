@@ -3,37 +3,35 @@ import { Link } from 'react-router-dom';
 
 export const NavbarContainer = styled.div`
     background: ${props => props.theme.secondary}; 
-    height: 50px; 
     display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px 30px; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 80px; 
+    padding: 40px 10px;
+    & > * {
+        margin-bottom: 10px;
+    }
 `
-export const LeftNav = styled.div`
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-`;
+export const Logo = styled.img`
+`; 
+
 export const StyledLink = styled(Link)`
     text-decoration: none; 
     font-size: 22px; 
     color: ${props => props.theme.textColor} 
-    letter-spacing: 0; 
-    padding: 10px 40px; 
     text-align: center;
-    border-radius: 10px; 
+    border-radius: 10px;
+    width: 100%;
+    text-align: center; 
 
     //--- change this onHover to when the page is selected later on ---
     &:hover{
         background: ${props => props.theme.main}; 
     }
+
     &:visited { 
         text-decoration: none; 
         color: ${props => props.theme.textColor}; 
        }
-`; 
-export const RightNav = styled.div`
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
 `; 

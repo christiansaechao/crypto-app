@@ -7,9 +7,9 @@ export const CurrencySelectorContainer = styled.div`
     align-items: center; 
     padding: 5px; 
     border-radius: 10px; 
-    margin-right: 20px; 
     cursor: pointer;
-    position: relative; 
+    position: relative;
+    max-width: 100%; 
 `; 
 export const DollarSymbol = styled.div`
     color: #02EC29; 

@@ -24,7 +24,7 @@ const BaseBox = styled.div`
 `
 
 export const Progress = styled(BaseBox)`
-    background: #1BA27A;
+    background: ${props => props.theme.orange};
     width: ${({ percent }) => percent}%;
     min-width: ${({ percent }) => percent < 2 ? "2" : percent}%;
 `

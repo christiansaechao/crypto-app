@@ -1,20 +1,10 @@
 import styled from 'styled-components'; 
 
-export const ChartContainer = styled.div`
-    width: 96%;
-    height: 40vh; 
-    margin: 30px auto; 
-    display: flex; 
-    justify-content: space-between;
-    align-items: center; 
-    position: relative; 
-    padding: 20px 0px; 
-`; 
-
 export const Wrapper = styled.div`
-    color: white; 
-    width: 45%;
-    height: 90%; 
+    color: ${props => props.theme.textColor};
+    width: 65%;
+    height: 40vh; 
+    margin: 10px 0;
     padding: 30px 20px 40px 20px;
     border-radius: 10px; 
     background: ${props => props.theme.secondary}

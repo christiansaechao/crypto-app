@@ -32,6 +32,9 @@ const Sparkline = (props) => {
         plugins: {
           tooltip: {
             enabled: false
+          },
+          legend: {
+            display: false
           }
         },
         scales: {
