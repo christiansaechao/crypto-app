@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const CoinsTableContainer = styled.table`
+
   color: ${props => props.theme.textColor};;
   width: 100%;
   border-collapse: seperate;
@@ -71,4 +73,9 @@ export const CenterElements = styled.div`
     &.percentage{
       color: ${(props) => (props.textColor ? '#02EC29' : '#CC1339')};
     }
+`; 
+
+export const StyledLink = styled(Link)`
+    text-decoration: none; 
+    color: ${props => props.theme.textColor};
 `; 

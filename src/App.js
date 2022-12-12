@@ -38,6 +38,7 @@ export default class App extends Component {
       <ThemeProvider theme={!changeTheme ? DarkTheme : LightTheme }>
         <Router>
           <GlobalStyles />
+
           <MainContainer>
             <Navbar handleThemeChange={handleThemeChange} handleCurrencyChange={handleCurrencyChange} />
             <Routes>

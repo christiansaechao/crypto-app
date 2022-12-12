@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CoinPageDetails from "components/CoinPageDetails/CoinPageDetails";
+import { useParams } from "react-router-dom";
 import CurrencyConverter from "components/CurrencyConverter/CurrencyConverter";
 
-export default class CoinPage extends Component {
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
+class CoinPage extends Component {
   state = {
     coinData: null,
   };
 
-  getCoinData = async () => {
+  getCoinData = async (coinId) => {
     try {
+      console.log(coinId)
       const { data } = await axios(
-        `https://api.coingecko.com/api/v3/coins/shiba-inu?localization=false&tickers=false&market_data=true&community_data=true&developer_data=false&sparkline=false`
+        `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=false&sparkline=false`
       );
       this.setState({ coinData: data });
     } catch (err) {
@@ -19,8 +24,12 @@ export default class CoinPage extends Component {
     }
   };
 
+  componentDidUpdate(prevProps) {
+  }
+
   componentDidMount() {
-    this.getCoinData();
+    let {coinId} = this.props.params;
+    this.getCoinData(coinId);
   }
 
   render() {
@@ -42,3 +51,5 @@ export default class CoinPage extends Component {
     );
   }
 }
+
+export default withParams(CoinPage); 
