@@ -13,19 +13,15 @@ export class LandingPageCharts extends Component {
     return (
       <>
         {chartsData && (
-          <ChartContainer>
             <Wrapper>
               <TextWrapper>
-                Today's BTC Volume $
+                BTC's Volume $
                 {chartsData.total_volumes[
                   chartsData.total_volumes.length - 1
-                ][1].toLocaleString(undefined, { maximumFractionDigits: 0 })}
-              </TextWrapper>
-              <Chart chartsData={chartsData} type={"line"} />
-            </Wrapper>
-            <Wrapper>
-              <TextWrapper>
-                Today's BTC Price $
+                ][1].toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}{" "}
+                & Price $
                 {chartsData.prices[
                   chartsData.prices.length - 1
                 ][1].toLocaleString(undefined, {
@@ -33,9 +29,8 @@ export class LandingPageCharts extends Component {
                   maximumFractionDigits: 2,
                 })}
               </TextWrapper>
-              <Chart chartsData={chartsData} type={"bar"} />
+              <Chart chartsData={chartsData} type={"line"} />
             </Wrapper>
-          </ChartContainer>
         )}
       </>
     );
