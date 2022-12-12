@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { NavbarContainer, LeftNav, StyledLink, RightNav } from './Navbar.styles'; 
-import SearchBar from '../SearchBar/SearchBar'; 
+import { NavbarContainer, StyledLink, Logo } from './Navbar.styles'; 
 import CurrencySelector from '../CurrencySelector/CurrencySelector'; 
-import ThemeChanger from '../ThemeChanger/ThemeChanger'; 
+import ThemeChanger from '../ThemeChanger/ThemeChanger';
+import LogoImage from '../../images/LogoImage.png';
 
 
 export default class Navbar extends Component {
@@ -11,15 +11,11 @@ export default class Navbar extends Component {
 
     return (
       <NavbarContainer>
-        <LeftNav>
-          <StyledLink to="/">Coins</StyledLink>
-          <StyledLink to="portfolio">Portfolio</StyledLink>
-        </LeftNav>
-        <RightNav>
-          <SearchBar />
+          <Logo src={LogoImage} />
+          <StyledLink to="/">C</StyledLink>
+          <StyledLink to="portfolio">P</StyledLink>
           <CurrencySelector handleCurrencyChange={handleCurrencyChange}/>
           <ThemeChanger handleThemeChange={handleThemeChange}/>
-        </RightNav>
       </NavbarContainer>
     )
   }

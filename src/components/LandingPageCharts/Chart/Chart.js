@@ -7,7 +7,8 @@ import {
     LineElement,
     PointElement,
     Tooltip,
-    Filler
+    Filler,
+    Legend
   } from "chart.js";
 import { Bar, Line } from "react-chartjs-2";
 
@@ -18,7 +19,8 @@ BarElement,
 LineElement,
 PointElement,
 Tooltip,
-Filler
+Filler,
+Legend
 );
 
 const Chart = ({type, chartsData}) => {
@@ -32,13 +34,13 @@ const Chart = ({type, chartsData}) => {
             }),
             datasets: [
                 {
-                data: chartsData.prices.map((price) => {
-                    return parseInt(price[1].toFixed(2));
-                }),
-                backgroundColor:  '#2172E5',
-                borderColor: '#A7A7A9',
-                borderWidth: '2',
-                borderRadius: '2',
+                    data: chartsData.prices.map((price) => {
+                        return parseInt(price[1].toFixed(2));
+                    }),
+                    backgroundColor:  '#2172E5',
+                    borderColor: '#A7A7A9',
+                    borderWidth: '2',
+                    borderRadius: '2',
                 },
             ],
             }}
@@ -82,25 +84,34 @@ const Chart = ({type, chartsData}) => {
                 }),
                 datasets: [
                 {
+                    label: 'Volume',
                     data: chartsData.total_volumes.map((volume) => {
                     return parseInt(volume[1].toFixed(2));
                     }),
-                    backgroundColor:(context) => {
-                        const ctx = context.chart.ctx;
-                        const gradient = ctx.createLinearGradient(0, 0, 0, 275);
-                        gradient.addColorStop(0, "rgba(0, 59, 32)");
-                        gradient.addColorStop(1, 'transparent');
-                        return gradient;
-                    },
-                    borderColor: 'rgb(0, 138, 75, .6)',
-                    fill: true
+                    borderColor: '#4688E4',
+                    backgroundColor: '#4688E4',
+                    borderWidth: '4',
+                    pointRadius: 2,
                 },
+                {
+                    label: 'Price',
+                    data: chartsData.prices.map((price) => {
+                        return parseInt(price[1].toFixed(2));
+                    }),
+                    backgroundColor:  '#FFAF2C',
+                    borderColor: '#FFAF2C',
+                    borderWidth: '4',
+                    pointRadius: 2,
+                }
                 ],
             }}
             options={{
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
+                    legend: {
+                        position: 'top'
+                      },
                     tooltip: {
                         enabled: true,
                         callbacks:{
@@ -114,16 +125,16 @@ const Chart = ({type, chartsData}) => {
                 },
                 scales: {
                 y: {
-                    display: false,
+                    display: true,
                     grid: {
-                    display: false,
+                    display: true,
                     drawBorder: false,
                     },
                 },
                 x: {
                     display: true,
                     grid: {
-                    display: false,
+                    display: true,
                     drawBorder: false,
                     },
                 },

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CoinPageDetails from "components/CoinPageDetails/CoinPageDetails";
 import { useParams } from "react-router-dom";
+import CurrencyConverter from "components/CurrencyConverter/CurrencyConverter";
 
 function withParams(Component) {
   return props => <Component {...props} params={useParams()} />;
@@ -34,7 +35,20 @@ class CoinPage extends Component {
   render() {
     const { coinData } = this.state;
     const { selectedCurrency } = this.props;
-    return <>{coinData && <CoinPageDetails selectedCurrency={selectedCurrency} coinData={coinData}/>}</>;
+    return (
+      <>
+        {coinData && (
+          <CoinPageDetails
+            coinData={coinData}
+            selectedCurrency={selectedCurrency}
+          />
+        )}
+        <CurrencyConverter
+          coinData={coinData}
+          selectedCurrency={selectedCurrency}
+        />
+      </>
+    );
   }
 }
 

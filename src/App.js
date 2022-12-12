@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
-import { DarkTheme , LightTheme, GlobalStyles } from "App.styled";
+import { DarkTheme , LightTheme, GlobalStyles, MainContainer } from "App.styled";
 import { CoinsPage, CoinPage, PortfolioPage, Navbar } from 'Pages';
 
 export default class App extends Component {
@@ -38,12 +38,15 @@ export default class App extends Component {
       <ThemeProvider theme={!changeTheme ? DarkTheme : LightTheme }>
         <Router>
           <GlobalStyles />
-          <Navbar handleThemeChange={handleThemeChange} handleCurrencyChange={handleCurrencyChange} />
-          <Routes>
-            <Route path="/" element={<CoinsPage selectedCurrency={selectedCurrency} />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/coin/:coinId" element={<CoinPage selectedCurrency={selectedCurrency} />} />
-          </Routes>
+
+          <MainContainer>
+            <Navbar handleThemeChange={handleThemeChange} handleCurrencyChange={handleCurrencyChange} />
+            <Routes>
+              <Route path="/" element={<CoinsPage selectedCurrency={selectedCurrency} />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/coin" element={<CoinPage selectedCurrency={selectedCurrency} />} />
+            </Routes>
+          </MainContainer>
         </Router>
       </ThemeProvider>
     )

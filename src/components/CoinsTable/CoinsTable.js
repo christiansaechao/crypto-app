@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCaretUp, FaCaretDown } from "react-icons/fa";
+import { FaCaretUp, FaCaretDown, FaChevronDown } from "react-icons/fa";
 import {
   CoinsTableContainer,
   CoinsTableHead,
@@ -23,12 +23,12 @@ class CoinsTable extends React.Component {
           <CoinsTableContainer>
             <CoinsTableHead>
               <CoinsTableRow>
-                <CoinsTableTH>#</CoinsTableTH>
-                <CoinsTableTH>Name</CoinsTableTH>
-                <CoinsTableTH>Price</CoinsTableTH>
-                <CoinsTableTH>1h%</CoinsTableTH>
-                <CoinsTableTH>24h%</CoinsTableTH>
-                <CoinsTableTH>7d%</CoinsTableTH>
+                <CoinsTableTH></CoinsTableTH>
+                <CoinsTableTH><CenterElements>Name<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
+                <CoinsTableTH><CenterElements>Price<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
+                <CoinsTableTH><CenterElements>1h%<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
+                <CoinsTableTH><CenterElements>24h%<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
+                <CoinsTableTH><CenterElements>7d%<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
                 <CoinsTableTH>24h Volume</CoinsTableTH>
                 <CoinsTableTH>Market Cap</CoinsTableTH>
                 <CoinsTableTH>Circulating/Total Supply</CoinsTableTH>
@@ -39,15 +39,15 @@ class CoinsTable extends React.Component {
               {coinsData.map((coin, index) => {
                 return (
                   <CoinsTableRow key={coin.id}>
-                    <CoinsTableTD>{index + 1}</CoinsTableTD>
-                    <CoinsTableTD className="img-name">
+                    <CoinsTableTD><div className='coin-rank'>{index + 1}</div></CoinsTableTD>
+                    <CoinsTableTD>
                       <CenterElements>
                         <CoinImage src={coin.image} />
                         <StyledLink to={`coin/${coin.id}`}>{coin.name}</StyledLink>
                       </CenterElements>
                     </CoinsTableTD>
                     <CoinsTableTD>
-                      ${coin.current_price.toLocaleString()}
+                      ${coin.current_price.toLocaleString(undefined, {minimumFractionDigits: 2, maxiumFractionDigits: 6})}
                     </CoinsTableTD>
                     <CoinsTableTD>
                       <CenterElements
@@ -88,7 +88,7 @@ class CoinsTable extends React.Component {
                     <CoinsTableTD>
                       ${coin.market_cap.toLocaleString()}
                     </CoinsTableTD>
-                    <CoinsTableTD>
+                    <CoinsTableTD className='remove-padding-right'>
                       <ProgressBar coin={coin}/>
                       {coin.circulating_supply === coin.total_supply
                         ? Math.trunc(coin.circulating_supply).toLocaleString()
@@ -96,7 +96,7 @@ class CoinsTable extends React.Component {
                           "/" +
                           Math.trunc(coin.total_supply).toLocaleString()}
                     </CoinsTableTD>
-                    <CoinsTableTD>
+                    <CoinsTableTD className='remove-padding-right'>
                       <div className="spark-line">
                         <Sparkline coinData={coin.sparkline_in_7d.price} />
                       </div>

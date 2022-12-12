@@ -2,43 +2,62 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const CoinsTableContainer = styled.table`
-  color: ${props => props.theme.textColor};
-  width: 95%;
+
+  color: ${props => props.theme.textColor};;
+  width: 100%;
   border-collapse: seperate;
   border-spacing: 0px;
   margin: 0 auto; 
-  border-radius: 10px; 
-  background: ${props => props.theme.secondary}; 
-  padding: 10px 40px;
+  background: ${props => props.theme.secondary};
+  border: 3px solid ${props => props.theme.greyText};
 `;
 
 export const CoinsTableHead = styled.thead`
+  background: ${props => props.theme.main};
 `;
 
 export const CoinsTableRow = styled.tr`
+    &:nth-child(even) {
+      background: ${props => props.theme.main};
+    }
 `;
 
 export const CoinsTableTH = styled.th`
-    font-size: 1.2rem;
-    text-align: left; 
+    font-size: 1.1rem;
     font-weight: 400;
-    padding: 10px 0;
-    border-bottom: 2px solid white; 
+    border-bottom: 2px solid ${props => props.theme.greyText};
+    text-align: left;
+    padding: 20px 10px;
+
+    & .color-change{
+      font-size: .9rem;
+      margin-left: 4px;
+      color: ${props => props.theme.orange};
+    }
 `;
 
 export const CoinsTableBody = styled.tbody`
-  padding: 20px; 
 `;
 
 export const CoinsTableTD = styled.td`
-    text-align: left;
+    font-size: .9rem;
     font-weight: 400;
-    border-bottom: 3px solid #707070; 
-    padding: 20px 0; 
+    border-bottom: 2px solid ${props => props.theme.greyText};
+    padding: 20px 10px;
 
     & .spark-line{
       height: 50px;
       width: 100px;
+    }
+    
+    & .coin-rank{
+      text-align: center;
+      padding: 4px;
+      border: 1px solid ${props => props.theme.orange}; 
+    }
+
+    &.remove-padding-right{
+      padding: 20px 0px; 
     }
 `;
 

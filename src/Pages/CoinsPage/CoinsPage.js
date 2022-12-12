@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { CoinsContainer } from "./CoinsPage.styles";
+import { CoinsContainer, Wrapper } from "./CoinsPage.styles";
 import CoinsTable from "../../components/CoinsTable/CoinsTable";
 import LandingPageCharts from "../../components/LandingPageCharts/LandingPageCharts";
+import FearIndex from "../../components/FearIndex/FearIndex";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const URL = "https://api.coingecko.com/api/v3/coins/";
 export default class CoinsPage extends Component {
   state = {
     coinsData: [],
     coinsPerPage: 20,
-    pageNum: 0,
+    pageNum: 1,
     chartsData: null,
     numDays: 30,
     hasMoreItems: true,
+    FearIndexData: null,
   };
 
   getCoinsData = async () => {
@@ -40,8 +43,13 @@ export default class CoinsPage extends Component {
     }
   };
 
-  updatePageNum = () => {
-    this.setState({ pageNum: this.state.pageNum + 1 });
+  getFearIndexData = async () => {
+    try {
+      const { data } = await axios(`https://api.alternative.me/fng/`);
+      this.setState({ FearIndexData: data });
+    } catch (err) {
+      console.log(err.error);
+    }
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,32 +58,40 @@ export default class CoinsPage extends Component {
       this.getChartsData();
     }
 
-    if(this.state.pageNum !== prevState.pageNum){
+    if (this.state.pageNum !== prevState.pageNum) {
       this.getCoinsData();
     }
   }
 
   componentDidMount() {
-    this.getCoinsData();
     this.getChartsData();
+    this.getCoinsData();
+    this.getFearIndexData();
   }
 
   render() {
-    const { coinsData, chartsData, hasMoreItems } = this.state;
+    const { coinsData, chartsData, hasMoreItems, pageNum, FearIndexData } =
+      this.state;
     return (
       <>
         {coinsData && (
-          <CoinsContainer>
-            <LandingPageCharts chartsData={chartsData} />
-            <InfiniteScroll
-              dataLength={coinsData.length}
-              next={this.updatePageNum}
-              hasMore={hasMoreItems}
-              loader={<h4>Loading...</h4>}
-            >
-              <CoinsTable coinsData={coinsData} />
-            </InfiniteScroll>
-          </CoinsContainer>
+          <>
+            <CoinsContainer>
+              <SearchBar />
+              <Wrapper>
+                <LandingPageCharts chartsData={chartsData} />
+                <FearIndex FearIndexData={FearIndexData} />
+              </Wrapper>
+              <InfiniteScroll
+                dataLength={coinsData.length}
+                next={() => this.setState({ pageNum: pageNum + 1 })}
+                hasMore={hasMoreItems}
+                loader={<h4>Loading...</h4>}
+              >
+                <CoinsTable coinsData={coinsData} />
+              </InfiniteScroll>
+            </CoinsContainer>
+          </>
         )}
       </>
     );
