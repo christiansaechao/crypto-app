@@ -9,4 +9,4 @@ const ProgressProvider = ({valueStart, valueEnd, children}) => {
   return children(value);
 }
 
-export default ProgressProvider
+export default ProgressProvider; 

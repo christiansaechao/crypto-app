@@ -23,10 +23,7 @@ class CoinPage extends Component {
       console.log(err.error);
     }
   };
-
-  componentDidUpdate(prevProps) {
-  }
-
+  
   componentDidMount() {
     let {coinId} = this.props.params;
     this.getCoinData(coinId);

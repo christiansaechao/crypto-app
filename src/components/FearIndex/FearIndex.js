@@ -38,7 +38,9 @@ const FearIndex = ({ FearIndexData }) => {
               />
             )}
           </ProgressProvider>
-          <FearClassification>{FearIndexData.data[0].value_classification}</FearClassification>
+          <FearClassification>
+            {FearIndexData.data[0].value_classification}
+          </FearClassification>
         </FearGreedIndex>
       )}
     </>
