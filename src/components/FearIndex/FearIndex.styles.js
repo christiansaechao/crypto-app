@@ -54,3 +54,88 @@ export const FearGreedIndex = styled.div`
     text-anchor: middle;
   }
 `;
+
+// .CircularProgressbar 
+// {
+//     margin-top: 30%;
+//     width: 100%;
+//     vertical-align: middle;
+// }
+
+// .CircularProgressbar .CircularProgressbar-path {
+//     stroke: #3e98c7;
+//     stroke-linecap: round;
+//     transition: stroke-dashoffset 0.5s ease 0s;
+// }
+
+// .CircularProgressbar .CircularProgressbar-trail {
+//     stroke: #d6d6d6;
+//     stroke-linecap: round;
+// }
+
+// .CircularProgressbar .CircularProgressbar-text {
+//     fill: #3e98c7;
+//     font-size: 1rem;
+//     dominant-baseline: middle;
+//     text-anchor: middle;
+// }
+
+// .outer-container{
+//     width: 486px;
+//     height: 300px; 
+//     margin: 0 auto;
+//     display: flex;
+//     background: rgb(53,53,53);
+//     background: linear-gradient(0deg, rgba(53,53,53,1) 0%, rgba(22,22,22,1) 39%);
+//     justify-content: start; 
+//     align-items: center; 
+//     flex-direction: column;
+//     border: 1px solid #272727;
+//     border-radius: 6px;
+//     font-family: Sans-serif;
+//     color: white;
+// }
+
+// .section-title{
+//     font-size: 1.5rem;
+//     margin-top: 22px;
+// }
+
+// .inner-container{
+//     display: flex; 
+//     justify-content: center; 
+//     align-items: center; 
+//     height: 250px;
+//     width: 339px;
+//     margin: 0 auto;
+//     position: relative;
+// }
+
+// .info{
+//     position: absolute;
+//     top: 15%;
+//     text-align: center;
+//     width: 100%;
+// }
+
+// .fear-level{
+//     font-size: 2rem;
+//     margin-bottom: 10px;
+// }
+
+// .sentiment-text{
+//     font-size: 12px;
+//     color: #606060; 
+//     margin-bottom: 20px;
+// }
+
+// .sentiment{
+//     color: white; 
+//     font-weight: 300;
+//     font-size: 1.5rem;
+//     margin-top: 10px;
+// }
+
+// .timer{
+//     font-size: 1.1rem;
+// }
