@@ -11,17 +11,21 @@ import {
 } from "./SearchBar.styles";
 import icon from "../../images/Search.png";
 
-const SearchBar = () => {
+const SearchBar = ({searchType}) => {
   const [Value, setValue] = useState("");
   const [Coins, setCoins] = useState([]);
 
   useEffect(()=> {
     const SearchCoin = async () => {
       try {
-        const { data } = await axios(
-          `https://crypto-app-server.herokuapp.com/coins/${Value}`
-        );
-        setCoins(data);
+        if(searchType === 'main'){
+          const { data } = await axios(
+            `https://crypto-app-server.herokuapp.com/coins/${Value}`
+          );
+          setCoins(data);
+        } else {
+          console.log('this is something else'); 
+        }
       } catch (err) {
         console.log(err.error);
       }

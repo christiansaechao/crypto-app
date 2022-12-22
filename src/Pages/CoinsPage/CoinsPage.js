@@ -80,7 +80,7 @@ export default class CoinsPage extends Component {
           <>
             <CoinsContainer>
               <Wrapper className='search-login'>
-                <SearchBar />
+                <SearchBar searchType={'main'}/>
                 <LoginButton />
                 <NotificationIcon />
               </Wrapper>
