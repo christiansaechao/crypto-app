@@ -4,8 +4,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { CoinsContainer, Wrapper } from "./CoinsPage.styles";
 import CoinsTable from "../../components/CoinsTable/CoinsTable";
 import LandingPageCharts from "../../components/LandingPageCharts/LandingPageCharts";
-import FearIndex from "../../components/FearIndex/FearIndex";
+import FearAndGreedIndex from "../../components/FearIndex/FearIndex";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import LoginButton from "../../components/LoginButton/LoginButton";
+import NotificationIcon from "../../components/NotificationIcon/NotificationIcon";
 
 const URL = "https://api.coingecko.com/api/v3/coins/";
 export default class CoinsPage extends Component {
@@ -77,10 +79,14 @@ export default class CoinsPage extends Component {
         {coinsData && (
           <>
             <CoinsContainer>
-              <SearchBar />
+              <Wrapper className='search-login'>
+                <SearchBar />
+                <LoginButton />
+                <NotificationIcon />
+              </Wrapper>
               <Wrapper>
                 <LandingPageCharts chartsData={chartsData} />
-                <FearIndex FearIndexData={FearIndexData} />
+                <FearAndGreedIndex FearIndexData={FearIndexData} />
               </Wrapper>
               <InfiniteScroll
                 dataLength={coinsData.length}

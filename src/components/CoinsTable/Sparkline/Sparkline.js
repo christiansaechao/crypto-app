@@ -1,5 +1,5 @@
-import React from "react";
-import {
+import React, { useState, useEffect }from "react";
+import { 
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
@@ -10,6 +10,14 @@ import { Line } from "react-chartjs-2";
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 const Sparkline = (props) => {
+  const [prices, setPrices] = useState([]);
+
+  useEffect (() => {
+    props.coinData.splice(0, 7).map((price) => {
+      setPrices(...prices, price);
+    })
+  }, []); 
+
   return (
     <Line
       data={{
@@ -21,7 +29,7 @@ const Sparkline = (props) => {
             }),
             backgroundColor: "red",
             borderColor: "red",
-            tension: .05,
+            tension: .5,
             radius: 0
           },
         ],

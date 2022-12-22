@@ -1,12 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const ProgressProvider = ({valueStart, valueEnd, children}) => {
-    const [value, setValue] = useState(valueStart);
-    useEffect(() => {
-        setTimeout(() => setValue(valueEnd), 1000);
-    }, [valueEnd]);
-    
-  return children(value);
-}
+const ChangingProgressProvider = (({ values, children }) => {
+        let [valuesIndex, setValuesIndex] = useState(0);
+        const defaultInterval = 1000;
+        useEffect(() => {
+            setInterval(() => {
+                setValuesIndex((valuesIndex + 1) % values.length)
+            }, defaultInterval)
+        }, [])
 
-export default ProgressProvider; 
+        return (
+            children(values[valuesIndex])
+        )
+    }
+)
+
+export default ChangingProgressProvider;
