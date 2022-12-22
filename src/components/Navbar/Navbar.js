@@ -1,22 +1,19 @@
-import React, { Component } from 'react'
-import { NavbarContainer, StyledLink, Logo } from './Navbar.styles'; 
-import CurrencySelector from '../CurrencySelector/CurrencySelector'; 
-import ThemeChanger from '../ThemeChanger/ThemeChanger';
-import LogoImage from '../../images/LogoImage.png';
-
+import React, { Component } from "react";
+import { NavbarContainer} from "./Navbar.styles";
+import CurrencySelector from "../CurrencySelector/CurrencySelector";
+import ThemeChanger from "../ThemeChanger/ThemeChanger";
+import Links from './Links/Links'; 
 
 export default class Navbar extends Component {
-  render(){ 
-    const {handleThemeChange, handleCurrencyChange} = this.props; 
-
+  render() {
+    const { handleThemeChange, handleCurrencyChange } = this.props;
     return (
       <NavbarContainer>
-          <Logo src={LogoImage} />
-          <StyledLink to="/">C</StyledLink>
-          <StyledLink to="portfolio">P</StyledLink>
-          <CurrencySelector handleCurrencyChange={handleCurrencyChange}/>
-          <ThemeChanger handleThemeChange={handleThemeChange}/>
+        {/* <Icon src={LogoImage} /> */}
+        <Links />
+        <CurrencySelector handleCurrencyChange={handleCurrencyChange} />
+        <ThemeChanger handleThemeChange={handleThemeChange} />
       </NavbarContainer>
-    )
+    );
   }
 }

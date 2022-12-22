@@ -104,7 +104,7 @@ export class CoinPageDetails extends Component {
                 <SmallDetail className='no-border'>
                   <div>Circulating Supply</div>
                   <div>{market_data.circulating_supply.toLocaleString()}</div> 
-                  <div>Max Supply: {market_data.max_supply !== null ? market_data.max_supply.toLocalString() : '--'}</div>
+                  <div>Max Supply: {market_data.max_supply !== null ? market_data.max_supply.toLocaleString() : '--'}</div>
                 </SmallDetail>
               </RightBotContainer>
             </RightContainer>

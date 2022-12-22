@@ -9,10 +9,11 @@ import {
   CoinsTableTD,
   CoinImage,
   CenterElements,
-  StyledLink
+  StyledLink,
 } from "./CoinsTable.styles";
 import Sparkline from "./Sparkline/Sparkline";
-import ProgressBar from '../ProgressBar/ProgressBar'; 
+import ProgressBar from "../ProgressBar/ProgressBar";
+import numeral from "numeral";
 
 class CoinsTable extends React.Component {
   render() {
@@ -24,11 +25,36 @@ class CoinsTable extends React.Component {
             <CoinsTableHead>
               <CoinsTableRow>
                 <CoinsTableTH></CoinsTableTH>
-                <CoinsTableTH><CenterElements>Name<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
-                <CoinsTableTH><CenterElements>Price<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
-                <CoinsTableTH><CenterElements>1h%<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
-                <CoinsTableTH><CenterElements>24h%<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
-                <CoinsTableTH><CenterElements>7d%<FaChevronDown className='color-change'/></CenterElements></CoinsTableTH>
+                <CoinsTableTH>
+                  <CenterElements>
+                    Name
+                    <FaChevronDown className="color-change" />
+                  </CenterElements>
+                </CoinsTableTH>
+                <CoinsTableTH>
+                  <CenterElements>
+                    Price
+                    <FaChevronDown className="color-change" />
+                  </CenterElements>
+                </CoinsTableTH>
+                <CoinsTableTH>
+                  <CenterElements>
+                    1h%
+                    <FaChevronDown className="color-change" />
+                  </CenterElements>
+                </CoinsTableTH>
+                <CoinsTableTH>
+                  <CenterElements>
+                    24h%
+                    <FaChevronDown className="color-change" />
+                  </CenterElements>
+                </CoinsTableTH>
+                <CoinsTableTH>
+                  <CenterElements>
+                    7d%
+                    <FaChevronDown className="color-change" />
+                  </CenterElements>
+                </CoinsTableTH>
                 <CoinsTableTH>24h Volume</CoinsTableTH>
                 <CoinsTableTH>Market Cap</CoinsTableTH>
                 <CoinsTableTH>Circulating/Total Supply</CoinsTableTH>
@@ -39,15 +65,23 @@ class CoinsTable extends React.Component {
               {coinsData.map((coin, index) => {
                 return (
                   <CoinsTableRow key={coin.id}>
-                    <CoinsTableTD><div className='coin-rank'>{index + 1}</div></CoinsTableTD>
+                    <CoinsTableTD className="first-child">
+                      <div className="coin-rank">{index + 1}</div>
+                    </CoinsTableTD>
                     <CoinsTableTD>
                       <CenterElements>
                         <CoinImage src={coin.image} />
-                        <StyledLink to={`coin/${coin.id}`}>{coin.name}</StyledLink>
+                        <StyledLink to={`coin/${coin.id}`}>
+                          {coin.name}
+                        </StyledLink>
                       </CenterElements>
                     </CoinsTableTD>
                     <CoinsTableTD>
-                      ${coin.current_price.toLocaleString(undefined, {minimumFractionDigits: 2, maxiumFractionDigits: 6})}
+                      $
+                      {coin.current_price.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maxiumFractionDigits: 6,
+                      })}
                     </CoinsTableTD>
                     <CoinsTableTD>
                       <CenterElements
@@ -56,8 +90,15 @@ class CoinsTable extends React.Component {
                           coin.price_change_percentage_1h_in_currency > 0
                         }
                       >
-                        {coin.price_change_percentage_1h_in_currency.toFixed(2)}%{" "}
-                        {coin.price_change_percentage_1h_in_currency > 0 ? (<FaCaretUp />) : (<FaCaretDown />)}
+                        {coin.price_change_percentage_1h_in_currency?.toFixed(
+                          2
+                        )}
+                        %{" "}
+                        {coin.price_change_percentage_1h_in_currency > 0 ? (
+                          <FaCaretUp />
+                        ) : (
+                          <FaCaretDown />
+                        )}
                       </CenterElements>
                     </CoinsTableTD>
                     <CoinsTableTD>
@@ -67,8 +108,15 @@ class CoinsTable extends React.Component {
                           coin.price_change_percentage_24h_in_currency > 0
                         }
                       >
-                        {coin.price_change_percentage_24h_in_currency.toFixed(2)}%{" "}
-                        {coin.price_change_percentage_24h_in_currency > 0 ? (<FaCaretUp />) : (<FaCaretDown />)}
+                        {coin.price_change_percentage_24h_in_currency?.toFixed(
+                          2
+                        )}
+                        %{" "}
+                        {coin.price_change_percentage_24h_in_currency > 0 ? (
+                          <FaCaretUp />
+                        ) : (
+                          <FaCaretDown />
+                        )}
                       </CenterElements>
                     </CoinsTableTD>
                     <CoinsTableTD>
@@ -78,8 +126,15 @@ class CoinsTable extends React.Component {
                           coin.price_change_percentage_7d_in_currency > 0
                         }
                       >
-                        {coin.price_change_percentage_7d_in_currency.toFixed(2)}%
-                        {coin.price_change_percentage_7d_in_currency > 0 ? (<FaCaretUp />) : (<FaCaretDown />)}
+                        {coin.price_change_percentage_7d_in_currency?.toFixed(
+                          2
+                        )}
+                        %
+                        {coin.price_change_percentage_7d_in_currency > 0 ? (
+                          <FaCaretUp />
+                        ) : (
+                          <FaCaretDown />
+                        )}
                       </CenterElements>
                     </CoinsTableTD>
                     <CoinsTableTD>
@@ -88,15 +143,20 @@ class CoinsTable extends React.Component {
                     <CoinsTableTD>
                       ${coin.market_cap.toLocaleString()}
                     </CoinsTableTD>
-                    <CoinsTableTD className='remove-padding-right'>
-                      <ProgressBar coin={coin}/>
-                      {coin.circulating_supply === coin.total_supply
-                        ? Math.trunc(coin.circulating_supply).toLocaleString()
-                        : Math.trunc(coin.circulating_supply).toLocaleString() +
-                          "/" +
-                          Math.trunc(coin.total_supply).toLocaleString()}
+                    <CoinsTableTD className='circulating-container'>
+                      <ProgressBar coin={coin} />
+                      {coin.circulating_supply === coin.total_supply ? (
+                        numeral(coin.circulating_supply).format("0.0a")
+                      ) : (
+                        <div className="num-container">
+                          <div>
+                            {numeral(coin.circulating_supply).format("0.0a")}
+                          </div>
+                          <div>{numeral(coin.total_supply).format("0.0a")}</div>
+                        </div>
+                      )}
                     </CoinsTableTD>
-                    <CoinsTableTD className='remove-padding-right'>
+                    <CoinsTableTD>
                       <div className="spark-line">
                         <Sparkline coinData={coin.sparkline_in_7d.price} />
                       </div>

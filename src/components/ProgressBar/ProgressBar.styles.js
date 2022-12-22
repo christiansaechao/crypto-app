@@ -10,7 +10,6 @@ export const Container = styled.div`
     margin: auto 0;
     overflow: hidden;
     border:none;
-    margin-right: auto;
 `
 
 const BaseBox = styled.div`

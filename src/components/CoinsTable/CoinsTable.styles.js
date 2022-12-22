@@ -9,7 +9,7 @@ export const CoinsTableContainer = styled.table`
   border-spacing: 0px;
   margin: 0 auto; 
   background: ${props => props.theme.secondary};
-  border: 3px solid ${props => props.theme.greyText};
+  border: 2px solid ${props => props.theme.greyText};
 `;
 
 export const CoinsTableHead = styled.thead`
@@ -23,7 +23,7 @@ export const CoinsTableRow = styled.tr`
 `;
 
 export const CoinsTableTH = styled.th`
-    font-size: 1.1rem;
+    font-size: .9rem;
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
     text-align: left;
@@ -40,11 +40,24 @@ export const CoinsTableBody = styled.tbody`
 `;
 
 export const CoinsTableTD = styled.td`
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
-    padding: 20px 10px;
+    padding: 20px 0px;
 
+    &.first-child{
+      padding-left: 32px;
+    }
+
+    &.circulating-container{
+      padding-right: 30px;
+      & .num-container{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+    }
+    
     & .spark-line{
       height: 50px;
       width: 100px;
@@ -52,13 +65,11 @@ export const CoinsTableTD = styled.td`
     
     & .coin-rank{
       text-align: center;
-      padding: 4px;
+      width: 18px;
+      height: 18px;
       border: 1px solid ${props => props.theme.orange}; 
     }
 
-    &.remove-padding-right{
-      padding: 20px 0px; 
-    }
 `;
 
 export const CoinImage = styled.img`
