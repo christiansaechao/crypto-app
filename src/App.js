@@ -18,16 +18,10 @@ export default class App extends Component {
     };
 
     this.handleThemeChange = this.handleThemeChange.bind(this);
-    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
   }
 
   handleThemeChange(){
     this.setState({ changeTheme: !this.state.changeTheme});
-  }
-
-  handleCurrencyChange(currency){
-    currency = currency.toLowerCase(); 
-    this.setState({selectedCurrency: currency})
   }
 
   render(){
@@ -40,7 +34,7 @@ export default class App extends Component {
           <GlobalStyles />
 
           <MainContainer>
-            <Navbar handleThemeChange={handleThemeChange} handleCurrencyChange={handleCurrencyChange} />
+            <Navbar handleThemeChange={handleThemeChange} />
             <Routes>
               <Route path="/" element={<CoinsPage selectedCurrency={selectedCurrency} />} />
               <Route path="/portfolio" element={<PortfolioPage />} />

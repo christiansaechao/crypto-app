@@ -49,7 +49,7 @@ const SearchBar = ({searchType}) => {
             onChange={(e) => setValue(e.target.value)}
           />
         </SearchContainer>
-        {Value != "" && (
+        {Value !== "" && (
           <SearchResults>
             {Coins.map((coin) => (
               <ResultItems key={coin.id}>

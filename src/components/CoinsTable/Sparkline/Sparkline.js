@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from "react";
+import React from "react";
 import { 
   Chart as ChartJS,
   CategoryScale,
@@ -10,13 +10,7 @@ import { Line } from "react-chartjs-2";
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 const Sparkline = (props) => {
-  const [prices, setPrices] = useState([]);
-
-  useEffect (() => {
-    props.coinData.splice(0, 7).map((price) => {
-      setPrices(...prices, price);
-    })
-  }, []); 
+  const manipulatedData = [...props.coinData];
 
   return (
     <Line
@@ -24,7 +18,7 @@ const Sparkline = (props) => {
         labels: ["", "", "", "", "", "", ""],
         datasets: [
           {
-            data: props.coinData.splice(0, 7).map((price) => {
+            data: manipulatedData.splice(0, 7).map((price) => {
               return price;
             }),
             backgroundColor: "red",

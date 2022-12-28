@@ -1,35 +1,28 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import ProgressProvider from "./ProgressProvider/ProgressProvider";
 import { FearGreedIndex } from "./FearIndex.styles";
-import Timer from './Timer/Timer'; 
+import Timer from "./Timer/Timer";
+import { getFearIndexData } from "store/getFearIndexData/actions";
 
 export const FearAndGreedIndex = () => {
-  const [FearGreedData, setFearGreedData] = useState();
-
+  const dispatch = useDispatch();
+  const fearGreedData = useSelector(
+    (state) => state.fearIndexData.fearIndexData
+  );
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const {
-          data: { data },
-        } = await axios(`https://api.alternative.me/fng/`);
-        setFearGreedData(data[0]);
-      } catch (err) {
-        console.log(err.error);
-      }
-    }
-    fetchData();
+    dispatch(getFearIndexData());
   }, []);
 
   return (
     <>
-      {FearGreedData && (
+      {fearGreedData && (
         <FearGreedIndex>
           <div className="outer-container">
             <div className="section-title">Fear & Greed Indicator</div>
             <div className="inner-container">
-              <ProgressProvider values={[0, FearGreedData.value]}>
+              <ProgressProvider values={[0, fearGreedData.value]}>
                 {(value) => (
                   <CircularProgressbarWithChildren
                     value={value}
@@ -54,15 +47,15 @@ export const FearAndGreedIndex = () => {
                     strokeWidth={7}
                   >
                     <div className="info">
-                      <div className="fear-level">{FearGreedData.value}</div>
+                      <div className="fear-level">{fearGreedData.value}</div>
                       <div className="sentiment-text">
                         Investor Sentiment:
                         <div className="sentiment">
-                          {FearGreedData.value_classification}
+                          {fearGreedData.value_classification}
                         </div>
                       </div>
                       <Timer
-                        timeLeft={parseInt(FearGreedData.time_until_update, 10)}
+                        timeLeft={parseInt(fearGreedData.time_until_update, 10)}
                       />
                     </div>
                   </CircularProgressbarWithChildren>
