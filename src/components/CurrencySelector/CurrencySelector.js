@@ -1,67 +1,57 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCurrencies, changeSelectedCurrency } from "store/selectedCurrency/actions";
 import {
   CurrencySelectorContainer,
   Carot,
   DollarSymbol,
   Currency,
 } from "./CurrencySelector.styles";
-import CurrencyDropdown from './CurrencyDropdown/CurrencyDropdown'; 
+import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
 import { FaCaretDown } from "react-icons/fa";
-export class CurrencySelector extends Component {
-  state = {
-    allCurrencies: null,
-    selectedCurrency: 'USD',
-    showDropDown: false
+const CurrencySelector = () => {
+  const [showDropDown, setShowDropDown] = useState(false); 
+
+  const dispatch = useDispatch();
+  const allCurrencies = useSelector(
+    (state) => state.currency.allCurrencies
+  );
+  const selectedCurrency = useSelector(
+    (state) => state.currency.selectedCurrency
+  ); 
+
+  const handleClick = () => {
+    setShowDropDown(!showDropDown);
   };
 
-  getAllCurrencies = async () => {
-    try {
-      const { data } = await axios(
-        `https://api.coingecko.com/api/v3/simple/supported_vs_currencies`
-      );
-      this.setState({ allCurrencies: data });
-    } catch (err) {
-      console.log(err.error);
-    }
-  };
-
-  handleClick = () => {
-    this.setState({ showDropDown: !this.state.showDropDown })
-  }
-
-  handleItemClick = (item) => {
+  const handleItemClick = (item) => {
     item = item.toUpperCase();
-    this.setState({ selectedCurrency: item });
-    this.props.handleCurrencyChange(item);
-  }
+    dispatch(changeSelectedCurrency(item)); 
+  };
 
-  componentDidUpdate(){ 
-  }
+  useEffect(() => {
+    dispatch(getAllCurrencies());
+  }, []);
 
-  componentDidMount(){
-    this.getAllCurrencies(); 
-  }
-
-  render() { 
-    const { selectedCurrency, allCurrencies } = this.state;
-    const { handleClick, handleItemClick } = this;
-    
-    return (
-      <>
-        <CurrencySelectorContainer onClick={handleClick}>
-          <DollarSymbol>
-            <div>$</div>
-          </DollarSymbol>
-          <Currency>{selectedCurrency}</Currency>
-          {this.state.showDropDown && <CurrencyDropdown allCurrencies={allCurrencies} handleItemClick={handleItemClick} /> }
-          <Carot>
-            <FaCaretDown />
-          </Carot>
-        </CurrencySelectorContainer>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <CurrencySelectorContainer onClick={handleClick}>
+        <DollarSymbol>
+          <div>$</div>
+        </DollarSymbol>
+        <Currency>{selectedCurrency}</Currency>
+        {showDropDown && (
+          <CurrencyDropdown
+            allCurrencies={allCurrencies}
+            handleItemClick={handleItemClick}
+          />
+        )}
+        <Carot>
+          <FaCaretDown />
+        </Carot>
+      </CurrencySelectorContainer>
+    </>
+  );
+};
 
 export default CurrencySelector;
