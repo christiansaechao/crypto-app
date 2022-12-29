@@ -8,17 +8,18 @@ export const CoinsTableContainer = styled.table`
   border-collapse: seperate;
   border-spacing: 0px;
   margin: 0 auto; 
-  background: ${props => props.theme.secondary};
+  background: ${props => props.theme.main};
   border: 2px solid ${props => props.theme.greyText};
+  border-radius: 5px;
 `;
 
 export const CoinsTableHead = styled.thead`
-  background: ${props => props.theme.main};
+  background: ${props => props.theme.secondary};
 `;
 
 export const CoinsTableRow = styled.tr`
     &:nth-child(even) {
-      background: ${props => props.theme.main};
+      background: ${props => props.theme.secondary};
     }
 `;
 
@@ -40,13 +41,16 @@ export const CoinsTableBody = styled.tbody`
 `;
 
 export const CoinsTableTD = styled.td`
+    max-width: 15px;
     font-size: .8rem;
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
     padding: 20px 0px;
 
     &.first-child{
-      padding-left: 32px;
+      padding-left: 30px;
+      padding-right: 8px;
+      align-self: center;
     }
 
     &.circulating-container{

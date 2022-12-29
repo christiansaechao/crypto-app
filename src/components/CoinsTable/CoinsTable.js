@@ -78,10 +78,7 @@ class CoinsTable extends React.Component {
                     </CoinsTableTD>
                     <CoinsTableTD>
                       $
-                      {coin.current_price.toLocaleString(undefined, {
-                        minimumFractionDigits: 2,
-                        maxiumFractionDigits: 6,
-                      })}
+                      {coin.current_price}
                     </CoinsTableTD>
                     <CoinsTableTD>
                       <CenterElements

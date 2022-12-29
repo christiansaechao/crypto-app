@@ -33,7 +33,7 @@ export const FearGreedIndex = styled.div`
     height: 40vh;
     margin: 0 auto;
     display: flex;
-    background: ${(props) => props.theme.secondary};
+    background: ${(props) => props.theme.main};
     justify-content: start;
     align-items: center;
     flex-direction: column;

@@ -11,6 +11,14 @@ ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 const Sparkline = (props) => {
   const manipulatedData = [...props.coinData];
+  const colorChange = () => {
+    const lastPrices =  manipulatedData.slice(1)
+    if(lastPrices[0] < lastPrices[7]){
+      return 'green'
+    } else {
+      return 'red'; 
+    }
+  }
 
   return (
     <Line
@@ -18,12 +26,12 @@ const Sparkline = (props) => {
         labels: ["", "", "", "", "", "", ""],
         datasets: [
           {
-            data: manipulatedData.splice(0, 7).map((price) => {
+            data: manipulatedData.slice(Math.max(manipulatedData.length - 7, 1)).map((price) => {
               return price;
             }),
-            backgroundColor: "red",
-            borderColor: "red",
-            tension: .5,
+            backgroundColor: 'red',
+            borderColor: 'red',
+            tension: .6,
             radius: 0
           },
         ],

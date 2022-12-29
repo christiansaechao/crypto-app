@@ -12,7 +12,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import LoginButton from "../../components/LoginButton/LoginButton";
 import NotificationIcon from "../../components/NotificationIcon/NotificationIcon";
 
-const CoinsPage = (props) => {
+const CoinsPage = () => {
   const coinsData = useSelector((state) => state.coinsData.data);
   const chartsData = useSelector((state) => state.chartsData.data);
   const selectedCurrency = useSelector((state) => state.currency.selectedCurrency); 
@@ -40,6 +40,7 @@ const CoinsPage = (props) => {
       {coinsData && (
         <>
           <CoinsContainer>
+            {console.log(coinsData)}
             <Wrapper className="search-login">
               <SearchBar searchType={"main"} />
               <LoginButton />
