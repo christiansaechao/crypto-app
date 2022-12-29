@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const CoinsTableContainer = styled.table`
-
-  color: ${props => props.theme.textColor};;
+  color: ${props => props.theme.textColor};
   width: 100%;
   border-collapse: seperate;
   border-spacing: 0px;
@@ -28,12 +27,20 @@ export const CoinsTableTH = styled.th`
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
     text-align: left;
-    padding: 20px 10px;
+    padding: 20px 0px;
 
     & .color-change{
       font-size: .9rem;
       margin-left: 4px;
       color: ${props => props.theme.orange};
+    }
+
+    &.percent-change{
+      width: 100px;
+    }
+
+    &.sparkline{
+      width: 130px;
     }
 `;
 
@@ -46,22 +53,23 @@ export const CoinsTableTD = styled.td`
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
     padding: 20px 0px;
+    text-align: left;
 
     &.first-child{
       padding-left: 30px;
-      padding-right: 8px;
       align-self: center;
     }
 
     &.circulating-container{
       padding-right: 30px;
+
       & .num-container{
         display: flex;
         justify-content: space-between;
         margin-top: 10px;
       }
     }
-    
+
     & .spark-line{
       height: 50px;
       width: 100px;
@@ -73,7 +81,6 @@ export const CoinsTableTD = styled.td`
       height: 18px;
       border: 1px solid ${props => props.theme.orange}; 
     }
-
 `;
 
 export const CoinImage = styled.img`
