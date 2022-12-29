@@ -16,7 +16,7 @@ export const MainContainer = styled.div`
 `; 
 
 export const DarkTheme = {
-    main: '#1E1E1E',
+    main: '#161616',
     secondary: '#1B1B1B',
     textColor: '#fff',
     greyText: '#272727',

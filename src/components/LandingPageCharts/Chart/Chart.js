@@ -17,8 +17,7 @@ ChartJS.register(
   LineElement,
   PointElement,
   Tooltip,
-  Filler,
-  Legend
+  Filler
 );
 
 const Chart = (props) => {
@@ -31,32 +30,47 @@ const Chart = (props) => {
   const getVolumesData = () => {
     return props.chartsData.total_volumes.map((volume) => {
       return parseInt(volume[1].toFixed(2));
+    });
+  };
+
+  const getPrices = () => {
+    return props.chartsData.prices.map((price) => {
+      return price[1];
     })
   }
+
+  const chartType = (type) => {
+    switch (type) {
+      case "volume":
+        const volumeSettings = {
+          label: "Volume",
+          data: getVolumesData(),
+          borderColor: "#4688E4",
+          backgroundColor: "#4688E4",
+          borderWidth: "2",
+          pointRadius: .5,
+        };
+        return volumeSettings;
+      case "price":
+        const priceSetting = {
+          label: "Price",
+          data: getPrices(),
+          backgroundColor: "#FFAF2C",
+          borderColor: "#FFAF2C",
+          borderWidth: "2",
+          pointRadius: .5,
+        };
+        return priceSetting;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Line
       data={{
         labels: getDates(),
-        datasets: [
-          {
-            label: "Volume",
-            data: getVolumesData(),
-            borderColor: "#4688E4",
-            backgroundColor: "#4688E4",
-            borderWidth: "4",
-            pointRadius: 2,
-          },
-          {
-            label: "Price",
-            data: props.chartsData.prices.map((price) => {
-              return parseInt(price[1].toFixed(2));
-            }),
-            backgroundColor: "#FFAF2C",
-            borderColor: "#FFAF2C",
-            borderWidth: "4",
-            pointRadius: 2,
-          },
-        ],
+        datasets: [chartType(props.chartType)]
       }}
       options={{
         responsive: true,
