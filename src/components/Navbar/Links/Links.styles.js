@@ -27,7 +27,7 @@ export const Text = styled.div`
 
 export const StyledLink = styled(Link)`
     text-decoration: none; 
-    color: ${props => props.theme.textColor} 
+    color: ${props => props.theme.textColor} ;
     border-radius: 10px;
     width: 100%;
     text-align: center; 
