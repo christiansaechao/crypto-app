@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { FaCaretUp, FaCaretDown, FaChevronDown } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaCaretUp, FaCaretDown, FaChevronDown, FaRedo } from "react-icons/fa";
 import {
   CoinsTableContainer,
   CoinsTableHead,
@@ -16,10 +16,23 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import numeral from "numeral";
 
 const CoinsTable = ({ coinsData }) => {
-  const filteredData = [...coinsData];
+  const [filter, setFilter] = useState("");
+  const [ascending, setAscending] = useState(true);
+  let filterData = [...coinsData];
 
-  const handleFilters = () => {
-    filteredData = filteredData.sort((a, b) => b.price_change_percentage_1h_in_currency - a.price_change_percentage_1h_in_currency);
+  const changeFilter = (filterType) => {
+    setFilter(filterType);
+    if (filter === filterType) {
+      setAscending(!ascending);
+    } else {
+      setAscending(true);
+    }
+  };
+
+  if (filter && ascending === true) {
+    filterData.sort((a, b) => b[filter] - a[filter]);
+  } else {
+    filterData.sort((a, b) => a[filter] - b[filter]);
   }
 
   return (
@@ -28,45 +41,63 @@ const CoinsTable = ({ coinsData }) => {
         <CoinsTableContainer>
           <CoinsTableHead>
             <CoinsTableRow>
-              <CoinsTableTH></CoinsTableTH>
-              <CoinsTableTH>
-                <CenterElements>
-                  Name
-                  <FaChevronDown className="color-change" />
-                </CenterElements>
+              <CoinsTableTH className='center' onClick={() =>
+                  changeFilter("")
+                }><FaRedo /></CoinsTableTH>
+              <CoinsTableTH className="name">
+                <CenterElements>Name</CenterElements>
               </CoinsTableTH>
-              <CoinsTableTH>
+              <CoinsTableTH onClick={() => changeFilter("current_price")}>
                 <CenterElements>
                   Price
                   <FaChevronDown className="color-change" />
                 </CenterElements>
               </CoinsTableTH>
-              <CoinsTableTH className="percent-change" onClick={() => handleFilters()}>
+              <CoinsTableTH
+                className="percent-change"
+                onClick={() =>
+                  changeFilter("price_change_percentage_1h_in_currency")
+                }
+              >
                 <CenterElements>
                   1h%
                   <FaChevronDown className="color-change" />
                 </CenterElements>
               </CoinsTableTH>
-              <CoinsTableTH className="percent-change">
+              <CoinsTableTH
+                className="percent-change"
+                onClick={() =>
+                  changeFilter("price_change_percentage_24h_in_currency")
+                }
+              >
                 <CenterElements>
                   24h%
                   <FaChevronDown className="color-change" />
                 </CenterElements>
               </CoinsTableTH>
-              <CoinsTableTH className="percent-change">
+              <CoinsTableTH
+                className="percent-change"
+                onClick={() =>
+                  changeFilter("price_change_percentage_7d_in_currency")
+                }
+              >
                 <CenterElements>
                   7d%
                   <FaChevronDown className="color-change" />
                 </CenterElements>
               </CoinsTableTH>
-              <CoinsTableTH>24h Volume</CoinsTableTH>
-              <CoinsTableTH>Market Cap</CoinsTableTH>
+              <CoinsTableTH onClick={() => changeFilter("total_volume")}>
+                24h Volume
+              </CoinsTableTH>
+              <CoinsTableTH onClick={() => changeFilter("market_cap")}>
+                Market Cap
+              </CoinsTableTH>
               <CoinsTableTH>Circulating/Total Supply</CoinsTableTH>
               <CoinsTableTH className="sparkline">Last 7d</CoinsTableTH>
             </CoinsTableRow>
           </CoinsTableHead>
           <CoinsTableBody>
-            {filteredData.map((coin, index) => {
+            {filterData.map((coin, index) => {
               return (
                 <CoinsTableRow key={coin.id}>
                   <CoinsTableTD className="first-child">
@@ -135,7 +166,8 @@ const CoinsTable = ({ coinsData }) => {
                   </CoinsTableTD>
                   <CoinsTableTD className="circulating-container">
                     <ProgressBar coin={coin} />
-                    {coin.circulating_supply === coin.total_supply ? (
+                    {coin.circulating_supply === coin.total_supply ||
+                    coin.total_supply === null ? (
                       numeral(coin.circulating_supply).format("0.0a")
                     ) : (
                       <div className="num-container">

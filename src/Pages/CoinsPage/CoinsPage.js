@@ -40,7 +40,6 @@ const CoinsPage = () => {
       {coinsData && (
         <>
           <CoinsContainer>
-            {console.log(coinsData)}
             <Wrapper className="search-login">
               <SearchBar searchType={"main"} />
               <LoginButton />

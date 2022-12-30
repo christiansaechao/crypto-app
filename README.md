@@ -1,4 +1,4 @@
-Live Version of Crypto App: https://crypto-8c3vq62xw-christiansaechao.vercel.app/
+Live Version of Crypto App: https://crypto-app-liart.vercel.app/
 
 # Getting Started with Create React App
 

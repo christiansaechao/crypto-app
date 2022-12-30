@@ -28,11 +28,16 @@ export const CoinsTableTH = styled.th`
     border-bottom: 2px solid ${props => props.theme.greyText};
     text-align: left;
     padding: 20px 0px;
+    cursor: pointer; 
 
     & .color-change{
       font-size: .9rem;
       margin-left: 4px;
       color: ${props => props.theme.orange};
+    }
+    
+    &.center{
+      text-align: center; 
     }
 
     &.percent-change{
@@ -41,6 +46,10 @@ export const CoinsTableTH = styled.th`
 
     &.sparkline{
       width: 130px;
+    }
+
+    &.name{
+      width: 120px;
     }
 `;
 
