@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const Wrapper = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.search-login{
+        height: 8vh;
+        margin-top: 10px;
+    }
+`;
+
 export const MainContainer = styled.div`
   position: relative;
   width: 70%;

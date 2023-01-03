@@ -40,11 +40,6 @@ const CoinsPage = () => {
       {coinsData && (
         <>
           <CoinsContainer>
-            <Wrapper className="search-login">
-              <SearchBar searchType={"main"} />
-              <LoginButton />
-              <NotificationIcon />
-            </Wrapper>
             <Wrapper>
               <LandingPageCharts chartsData={chartsData} />
               <FearAndGreedIndex />
