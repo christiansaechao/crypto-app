@@ -13,6 +13,12 @@ export const GlobalStyles = createGlobalStyle `
 
 export const MainContainer = styled.div`
     display: flex;
+`;
+
+export const ContentContainer = styled.div`
+    margin-top: 10px;
+    padding: 0 40px;
+    width: 100%;
 `; 
 
 export const DarkTheme = {

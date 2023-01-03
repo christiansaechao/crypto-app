@@ -1,52 +1,46 @@
-import React, { Component } from "react";
-import axios from "axios";
-import CoinPageDetails from "components/CoinPageDetails/CoinPageDetails";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCoinData } from "store/getCoinData/actions";
 import { useParams } from "react-router-dom";
+import CoinPageChart from '../../components/CoinPageChart/CoinPageChart'; 
+import CoinPageDetails from "components/CoinPageDetails/CoinPageDetails";
 import CurrencyConverter from "components/CurrencyConverter/CurrencyConverter";
+import { MainContainer } from './CoinPage.styles'; 
+import { changeSelectedCoin } from "store/getChartsData/actions";
+
 
 function withParams(Component) {
-  return props => <Component {...props} params={useParams()} />;
+  return (props) => <Component {...props} params={useParams()} />;
 }
-class CoinPage extends Component {
-  state = {
-    coinData: null,
-  };
+const CoinPage = (props) => {
+  const dispatch = useDispatch();
+  const coinData = useSelector((state) => state.coinData.coinData);
+  const chartsData = useSelector((state) => state.chartsData.data);
+  const selectedCurrency = useSelector((state) => state.currency.selectedCurrency); 
 
-  getCoinData = async (coinId) => {
-    try {
-      console.log(coinId)
-      const { data } = await axios(
-        `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=false&sparkline=false`
-      );
-      this.setState({ coinData: data });
-    } catch (err) {
-      console.log(err.error);
-    }
-  };
-  
-  componentDidMount() {
-    let {coinId} = this.props.params;
-    this.getCoinData(coinId);
-  }
+  useEffect(() => {
+    const {coinId} = props.params;
+    dispatch(changeSelectedCoin(coinId)); 
+    dispatch(getCoinData(coinId));
+  }, []); 
 
-  render() {
-    const { coinData } = this.state;
-    const { selectedCurrency } = this.props;
     return (
       <>
         {coinData && (
-          <CoinPageDetails
-            coinData={coinData}
-            selectedCurrency={selectedCurrency}
-          />
+          <MainContainer>
+            <CoinPageDetails
+              coinData={coinData}
+              selectedCurrency={selectedCurrency}
+            />
+            <CurrencyConverter
+              coinData={coinData}
+              selectedCurrency={selectedCurrency}
+            />
+            <CoinPageChart chartsData={chartsData}/>
+          </MainContainer>
         )}
-        <CurrencyConverter
-          coinData={coinData}
-          selectedCurrency={selectedCurrency}
-        />
       </>
     );
-  }
 }
 
-export default withParams(CoinPage); 
+export default withParams(CoinPage);
