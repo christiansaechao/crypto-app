@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeChartType, changeDateRange } from "store/getChartsData/actions";
+import { getChartsData } from "store/getChartsData/actions";
 import Chart from "../LandingPageCharts/Chart/Chart";
 
 import {
@@ -13,6 +14,7 @@ import {
 
 const CoinPageChart = ({ chartsData }) => {
   const dispatch = useDispatch();
+  const selectedCurrency = useSelector((state) => state.currency.selectedCurrency); 
   const [leftButtons, setLeftButtons] = useState({
     volume: false,
     price: true,
@@ -26,10 +28,15 @@ const CoinPageChart = ({ chartsData }) => {
   }); 
   const chartType = useSelector((state) => state.chartsData.chartType);
 
+  useEffect(() => {
+    dispatch(getChartsData());
+  }, [selectedCurrency]);
+
   const changeChart = (chartType) => {
     dispatch(changeChartType(chartType));
     setLeftButtons({ volume: !leftButtons.volume, price: !leftButtons.price });
   };
+
   const changeDate = (dateRange) => {
     dispatch(changeDateRange(dateRange));
     switch(dateRange){
