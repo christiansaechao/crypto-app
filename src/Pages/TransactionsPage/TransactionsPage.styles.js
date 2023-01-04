@@ -4,11 +4,17 @@ export const MainContainer = styled.div`
     height: 100vh;
 `; 
 
+export const Header = styled.div`
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.textColor};
+  margin: 20px 0;
+  padding: 0;
+`; 
 export const DetailsContainer = styled.div`
   color: ${(props) => props.theme.textColor};
   display: flex;
   width: 100%;
-  margin: 40px 0;
+  margin-bottom: 20px;
   gap: 15px;
 `;
 

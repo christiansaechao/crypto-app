@@ -2,7 +2,7 @@ export const TransactionsData = [
     {
         txType: 'Buy',
         txNumber: 3141991481339310,
-        asset: 'Bitcoin',
+        asset: 'BTC',
         dateTimeBought: 'Nov 21, 20:42',
         priceBoughtFor: 1812,
         amount: 12,
@@ -13,7 +13,7 @@ export const TransactionsData = [
     {
         txType: 'Buy',
         txNumber: 3141991481339313,
-        asset: 'Cardano',
+        asset: 'ADA',
         dateTimeBought: 'Nov 24, 20:17',
         priceBoughtFor: 2.36,
         amount: 134,
@@ -30,7 +30,7 @@ export const TransactionsData = [
         amount: 12,
         gainLossFiat: 3622,
         gainLossPercent: 236,
-        txStatus: 'Complete'
+        txStatus: 'Pending'
     },
     {
         txType: 'Buy',
@@ -44,9 +44,9 @@ export const TransactionsData = [
         txStatus: 'Complete'
     },
     {
-        txType: 'Buy',
+        txType: 'Sell',
         txNumber: 3141991481339316,
-        asset: 'USD',
+        asset: 'BUSD',
         dateTimeBought: 'Nov 30, 20:12',
         priceBoughtFor: 1.00,
         amount: 1200,

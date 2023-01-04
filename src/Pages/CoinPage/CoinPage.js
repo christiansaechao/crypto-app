@@ -19,7 +19,7 @@ const CoinPage = (props) => {
   const selectedCurrency = useSelector((state) => state.currency.selectedCurrency); 
 
   useEffect(() => {
-    const {coinId} = props.params;
+    const { coinId } = props.params;
     dispatch(changeSelectedCoin(coinId)); 
     dispatch(getCoinData(coinId));
   }, []); 

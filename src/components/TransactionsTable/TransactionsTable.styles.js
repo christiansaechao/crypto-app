@@ -19,14 +19,18 @@ export const CoinsTableRow = styled.tr`
     &:nth-child(even) {
       background: ${props => props.theme.secondary};
     }
+
+    &:last-child{
+      border-bottom: none;
+    }
 `;
 
 export const CoinsTableTH = styled.th`
     font-size: .9rem;
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
-    text-align: center;
-    padding: 20px 0px;
+    text-align: left;
+    padding: 20px;
     cursor: pointer;
 `;
 
@@ -38,7 +42,30 @@ export const CoinsTableTD = styled.td`
     max-width: 15px;
     font-size: .8rem;
     font-weight: 400;
+    padding: 20px;
+    text-align: left;
     border-bottom: 2px solid ${props => props.theme.greyText};
-    padding: 20px 0px;
-    text-align: center;
+
+    &:first-child{
+      text-align: center;
+      padding-right: 0; 
+    }
+
+    & .checkbox{
+      font-size: 1.2rem;
+      background: ${props => props.theme.orange};
+      color: ${props => props.theme.greyText};
+    }
+
+    & .green{
+      color: green; 
+    }
+
+    & .red{
+      color: red; 
+    }
+
+    & .yellow{
+      color: ${props => props.theme.orange};
+    }
 `;
