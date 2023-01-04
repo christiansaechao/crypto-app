@@ -8,9 +8,6 @@ import { CoinsContainer, Wrapper } from "./CoinsPage.styles";
 import CoinsTable from "../../components/CoinsTable/CoinsTable";
 import LandingPageCharts from "../../components/LandingPageCharts/LandingPageCharts";
 import FearAndGreedIndex from "../../components/FearIndex/FearIndex";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import LoginButton from "../../components/LoginButton/LoginButton";
-import NotificationIcon from "../../components/NotificationIcon/NotificationIcon";
 
 const CoinsPage = () => {
   const coinsData = useSelector((state) => state.coinsData.data);

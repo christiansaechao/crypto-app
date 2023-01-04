@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getSearchbarData } from "store/getSearchbarData/actions";
 import {
   SearchIcon,
   SearchField,
@@ -14,27 +15,18 @@ import LoginButton from "components/LoginButton/LoginButton";
 import NotificationIcon from "components/NotificationIcon/NotificationIcon";
 import icon from "../../images/Search.png";
 
-const SearchBar = ({ searchType }) => {
-  const [Value, setValue] = useState("");
-  const [Coins, setCoins] = useState([]);
+const SearchBar = () => {
+  const dispatch = useDispatch();
+  const coins = useSelector((state) => state.searchBarData.coins); 
+  const [value, setValue] = useState("");
 
-  useEffect(() => {
-    const SearchCoin = async () => {
-      try {
-        if (searchType === "main") {
-          const { data } = await axios(
-            `https://crypto-app-server.herokuapp.com/coins/${Value}`
-          );
-          setCoins(data);
-        } else {
-          console.log("this is something else");
-        }
-      } catch (err) {
-        console.log(err.error);
-      }
-    };
-    SearchCoin();
-  }, [Value]);
+  useEffect(()=> {
+    dispatch(getSearchbarData(value)); 
+  }, [value])
+
+  const resetSearchbar = () => {
+    setValue(''); 
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,15 +41,15 @@ const SearchBar = ({ searchType }) => {
             <SearchField
               type="text"
               placeholder="Search..."
-              value={Value}
+              value={value}
               onChange={(e) => setValue(e.target.value)}
             />
           </SearchContainer>
-          {Value !== "" && (
+          {coins !== null && value && (
             <SearchResults>
-              {Coins.map((coin) => (
+              {coins.map((coin) => (
                 <ResultItems key={coin.id}>
-                  <StyledLink to={`coin/${coin.id}`}>{coin?.id}</StyledLink>
+                  <StyledLink onClick={() => resetSearchbar()} to={`coin/${coin.id}`}>{coin?.id}</StyledLink>
                 </ResultItems>
               ))}
             </SearchResults>
