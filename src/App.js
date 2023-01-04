@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { DarkTheme, LightTheme, GlobalStyles, MainContainer, ContentContainer } from "App.styled";
-import { CoinsPage, CoinPage, PortfolioPage, Navbar } from "Pages";
+import { CoinsPage, CoinPage, PortfolioPage, Navbar, TransactionsPage } from "Pages";
 import SearchBar from "components/SearchBar/SearchBar";
 
 export default class App extends Component {
@@ -39,6 +39,7 @@ export default class App extends Component {
                   element={<CoinsPage selectedCurrency={selectedCurrency} />}
                 />
                 <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/transactions" element={<TransactionsPage />} />
                 <Route
                   path="/coin/:coinId"
                   element={<CoinPage selectedCurrency={selectedCurrency} />}
