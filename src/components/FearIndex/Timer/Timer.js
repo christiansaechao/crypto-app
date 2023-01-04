@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = ({ timeLeft }) => {
-    let newHours = Math.floor(timeLeft / 3600);
-    let newMinutes = Math.floor((timeLeft - newHours * 3600) / 60);
-    let newSeconds = timeLeft - newHours * 3600 - newMinutes * 60;
+    const newHours = Math.floor(timeLeft / 3600);
+    const newMinutes = Math.floor((timeLeft - newHours * 3600) / 60);
+    const newSeconds = timeLeft - newHours * 3600 - newMinutes * 60;
   
     const [hours, setHours] = useState(newHours);
     const [minutes, setMinutes] = useState(newMinutes);

@@ -4,6 +4,7 @@ import getCoinsDataReducer from "./getCoinsData/getCoinsDataReducer";
 import getChartsDataReducer from "./getChartsData/getChartsDataReducer";
 import getFearIndexDataReducer from "./getFearIndexData/getFearIndexDataReducer";
 import getCoinDataReducer from "./getCoinData/getCoinDataReducer";
+import getSearchbarData from "./getSearchbarData/getSearchbarData";
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     chartsData: getChartsDataReducer,
     currency: selectedCurrencyReducer,
     fearIndexData: getFearIndexDataReducer,
-    coinData: getCoinDataReducer
+    coinData: getCoinDataReducer,
+    searchBarData: getSearchbarData
   }
 });
 

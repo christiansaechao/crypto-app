@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getSearchbarData } from "store/getSearchbarData/actions";
 import { changeSelectedCoin } from "store/getChartsData/actions";
-import axios from "axios";
 import {
   SearchField,
   SearchContainer,
@@ -13,27 +13,21 @@ import {
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const [Value, setValue] = useState("");
-  const [Coins, setCoins] = useState([]);
+  const coins = useSelector((state) => state.searchBarData.coins); 
+  const [value, setValue] = useState("");
 
   useEffect(()=> {
-    const SearchCoin = async () => {
-      try {
-
-          const { data } = await axios(
-            `https://crypto-app-server.herokuapp.com/coins/${Value}`
-          );
-          setCoins(data);
-      } catch (err) {
-        console.log(err.error);
-      }
-    };
-    SearchCoin(); 
-  }, [Value])
+    dispatch(getSearchbarData(value)); 
+  }, [value])
 
   const changeCoin = (coin) => {
     const coinId = coin.id; 
-    dispatch(changeSelectedCoin(coinId)); 
+    dispatch(changeSelectedCoin(coinId));
+    resetSearchbar(); 
+  }
+
+  const resetSearchbar = () => {
+    setValue(''); 
   }
 
   const handleSubmit = (e) => {
@@ -47,13 +41,13 @@ const SearchBar = () => {
           <SearchField
             type="text"
             placeholder="Search..."
-            value={Value}
+            value={value}
             onChange={(e) => setValue(e.target.value)}
           />
         </SearchContainer>
-        {Value !== "" && (
+        {coins !== null && value && (
           <SearchResults>
-            {Coins.map((coin) => (
+            {coins.map((coin) => (
               <ResultItems key={coin.id}>
                 <CoinContainer onClick={() => changeCoin(coin)}>{coin?.id}</CoinContainer>
               </ResultItems>

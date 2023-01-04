@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const MainWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  algin-items: center;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 40px; 
