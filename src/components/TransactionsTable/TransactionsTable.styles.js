@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CoinsTableContainer = styled.table`
+export const TransactionsTableContainer = styled.table`
   color: ${props => props.theme.textColor};
   width: 100%;
   border-collapse: seperate;
@@ -11,11 +11,11 @@ export const CoinsTableContainer = styled.table`
   border-radius: 5px;
 `;
 
-export const CoinsTableHead = styled.thead`
+export const TransactionsTableHead = styled.thead`
   background: ${props => props.theme.secondary};
 `;
 
-export const CoinsTableRow = styled.tr`
+export const TransactionsTableRow = styled.tr`
     &:nth-child(even) {
       background: ${props => props.theme.secondary};
     }
@@ -25,7 +25,7 @@ export const CoinsTableRow = styled.tr`
     }
 `;
 
-export const CoinsTableTH = styled.th`
+export const TransactionsTableTH = styled.th`
     font-size: .9rem;
     font-weight: 400;
     border-bottom: 2px solid ${props => props.theme.greyText};
@@ -34,11 +34,11 @@ export const CoinsTableTH = styled.th`
     cursor: pointer;
 `;
 
-export const CoinsTableBody = styled.tbody`
+export const TransactionsTableBody = styled.tbody`
   height: 50vh;
 `;
 
-export const CoinsTableTD = styled.td`
+export const TransactionsTableTD = styled.td`
     max-width: 15px;
     font-size: .8rem;
     font-weight: 400;

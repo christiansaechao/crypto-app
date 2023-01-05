@@ -2,12 +2,12 @@ import React from "react";
 import { TransactionsData } from "./TransactionsData";
 import { FaCheckSquare } from "react-icons/fa";
 import {
-  CoinsTableContainer,
-  CoinsTableHead,
-  CoinsTableRow,
-  CoinsTableTH,
-  CoinsTableBody,
-  CoinsTableTD,
+  TransactionsTableContainer,
+  TransactionsTableHead,
+  TransactionsTableRow,
+  TransactionsTableTH,
+  TransactionsTableBody,
+  TransactionsTableTD,
 } from "./TransactionsTable.styles";
 
 const TransactionsTable = () => {
@@ -25,46 +25,46 @@ const TransactionsTable = () => {
     }
   };
   return (
-    <CoinsTableContainer>
-      <CoinsTableHead>
-        <CoinsTableRow>
-          <CoinsTableTH></CoinsTableTH>
-          <CoinsTableTH>Transactions</CoinsTableTH>
-          <CoinsTableTH>Asset</CoinsTableTH>
-          <CoinsTableTH>Price Bought For</CoinsTableTH>
-          <CoinsTableTH>Amount</CoinsTableTH>
-          <CoinsTableTH>Gain/Loss</CoinsTableTH>
-          <CoinsTableTH>Transaction Status</CoinsTableTH>
-          <CoinsTableTH>Date/Time Bought</CoinsTableTH>
-        </CoinsTableRow>
-      </CoinsTableHead>
-      <CoinsTableBody>
+    <TransactionsTableContainer>
+      <TransactionsTableHead>
+        <TransactionsTableRow>
+          <TransactionsTableTH></TransactionsTableTH>
+          <TransactionsTableTH>Transactions</TransactionsTableTH>
+          <TransactionsTableTH>Asset</TransactionsTableTH>
+          <TransactionsTableTH>Price Bought For</TransactionsTableTH>
+          <TransactionsTableTH>Amount</TransactionsTableTH>
+          <TransactionsTableTH>Gain/Loss</TransactionsTableTH>
+          <TransactionsTableTH>Transaction Status</TransactionsTableTH>
+          <TransactionsTableTH>Date/Time Bought</TransactionsTableTH>
+        </TransactionsTableRow>
+      </TransactionsTableHead>
+      <TransactionsTableBody>
         {transactions.map((transaction) => (
-          <CoinsTableRow>
-            <CoinsTableTD>
+          <TransactionsTableRow>
+            <TransactionsTableTD>
               <FaCheckSquare className="checkbox" />
-            </CoinsTableTD>
-            <CoinsTableTD>
+            </TransactionsTableTD>
+            <TransactionsTableTD>
               <div className={transaction.txType === "Buy" ? "green" : "red"}>
                 {transaction.txType}
               </div>{" "}
               #{transaction.txNumber}
-            </CoinsTableTD>
-            <CoinsTableTD>{transaction.asset}</CoinsTableTD>
-            <CoinsTableTD>
+            </TransactionsTableTD>
+            <TransactionsTableTD>{transaction.asset}</TransactionsTableTD>
+            <TransactionsTableTD>
               $
               {transaction.priceBoughtFor < 1
                 ? transaction.priceBoughtFor
                 : transaction.priceBoughtFor.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                   })}
-            </CoinsTableTD>
-            <CoinsTableTD>
+            </TransactionsTableTD>
+            <TransactionsTableTD>
               {transaction.amount.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
               })}
-            </CoinsTableTD>
-            <CoinsTableTD>
+            </TransactionsTableTD>
+            <TransactionsTableTD>
               <div className={ transaction.gainLossPercent > 0 ? 'green' : 'red'}>
               $
               {transaction.gainLossFiat.toLocaleString(undefined, {
@@ -72,17 +72,17 @@ const TransactionsTable = () => {
               })}{" "}
               ({transaction.gainLossPercent}%)
               </div>
-            </CoinsTableTD>
-            <CoinsTableTD>
+            </TransactionsTableTD>
+            <TransactionsTableTD>
               <div className={txStatus(transaction.txStatus)}>
                 {transaction.txStatus}
               </div>
-            </CoinsTableTD>
-            <CoinsTableTD>{transaction.dateTimeBought}</CoinsTableTD>
-          </CoinsTableRow>
+            </TransactionsTableTD>
+            <TransactionsTableTD>{transaction.dateTimeBought}</TransactionsTableTD>
+          </TransactionsTableRow>
         ))}
-      </CoinsTableBody>
-    </CoinsTableContainer>
+      </TransactionsTableBody>
+    </TransactionsTableContainer>
   );
 };
 
