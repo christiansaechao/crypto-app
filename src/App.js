@@ -8,7 +8,7 @@ import {
   MainContainer,
   ContentContainer,
 } from "App.styled";
-import { CoinsPage, CoinPage, PortfolioPage, Navbar } from "Pages";
+import { CoinsPage, CoinPage, PortfolioPage, Navbar, TransactionsPage } from "Pages";
 import SearchBar from "components/SearchBar/SearchBar";
 
 const App = () => {
@@ -29,6 +29,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<CoinsPage />} />
               <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/transactions" element={<TransactionsPage />} />
               <Route path="/coin/:coinId" element={<CoinPage />} />
             </Routes>
           </ContentContainer>

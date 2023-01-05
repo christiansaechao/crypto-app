@@ -25,7 +25,7 @@ const CoinPage = (props) => {
   }, [props.params]); 
 
   useEffect(() => {
-    const {coinId} = props.params;
+    const { coinId } = props.params;
     dispatch(changeSelectedCoin(coinId)); 
     dispatch(getCoinData(coinId));
   }, []); 

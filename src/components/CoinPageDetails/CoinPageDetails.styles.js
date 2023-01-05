@@ -91,7 +91,7 @@ export const BlockchainType = styled.div`
 `;
 export const CoinName = styled.div`
     font-size: 1.5rem;
-    font-weight: 400;z
+    font-weight: 400;
 `;
 export const ContractAddress = styled.div`
   white-space: nowrap;
