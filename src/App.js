@@ -1,54 +1,42 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { DarkTheme, LightTheme, GlobalStyles, MainContainer, ContentContainer } from "App.styled";
+import {
+  DarkTheme,
+  LightTheme,
+  GlobalStyles,
+  MainContainer,
+  ContentContainer,
+} from "App.styled";
 import { CoinsPage, CoinPage, PortfolioPage, Navbar, TransactionsPage } from "Pages";
 import SearchBar from "components/SearchBar/SearchBar";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [changeTheme, setChangeTheme] = useState(false);
 
-    this.state = {
-      changeTheme: false,
-      selectedCurrency: "usd",
-    };
+  const handleThemeChange = () => {
+    setChangeTheme(!changeTheme);
+  };
 
-    this.handleThemeChange = this.handleThemeChange.bind(this);
-  }
+  return (
+    <ThemeProvider theme={!changeTheme ? DarkTheme : LightTheme}>
+      <Router>
+        <GlobalStyles />
+        <MainContainer>
+          <Navbar handleThemeChange={handleThemeChange} />
+          <ContentContainer>
+            <SearchBar />
+            <Routes>
+              <Route path="/" element={<CoinsPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/transactions" element={<TransactionsPage />} />
+              <Route path="/coin/:coinId" element={<CoinPage />} />
+            </Routes>
+          </ContentContainer>
+        </MainContainer>
+      </Router>
+    </ThemeProvider>
+  );
+};
 
-  handleThemeChange() {
-    this.setState({ changeTheme: !this.state.changeTheme });
-  }
-
-  render() {
-    const { changeTheme, selectedCurrency } = this.state;
-    const { handleThemeChange } = this;
-
-    return (
-      <ThemeProvider theme={!changeTheme ? DarkTheme : LightTheme}>
-        <Router>
-          <GlobalStyles />
-          <MainContainer>
-            <Navbar handleThemeChange={handleThemeChange} />
-            <ContentContainer>
-              <SearchBar />
-              <Routes>
-                <Route
-                  path="/"
-                  element={<CoinsPage selectedCurrency={selectedCurrency} />}
-                />
-                <Route path="/portfolio" element={<PortfolioPage />} />
-                <Route path="/transactions" element={<TransactionsPage />} />
-                <Route
-                  path="/coin/:coinId"
-                  element={<CoinPage selectedCurrency={selectedCurrency} />}
-                />
-              </Routes>
-            </ContentContainer>
-          </MainContainer>
-        </Router>
-      </ThemeProvider>
-    );
-  }
-}
+export default App;

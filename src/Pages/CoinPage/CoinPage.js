@@ -16,7 +16,13 @@ const CoinPage = (props) => {
   const dispatch = useDispatch();
   const coinData = useSelector((state) => state.coinData.coinData);
   const chartsData = useSelector((state) => state.chartsData.data);
-  const selectedCurrency = useSelector((state) => state.currency.selectedCurrency); 
+  const selectedCurrency = useSelector((state) => state.currency.selectedCurrency);
+
+  useEffect(() => {
+    const {coinId} = props.params;
+    dispatch(changeSelectedCoin(coinId)); 
+    dispatch(getCoinData(coinId));
+  }, [props.params]); 
 
   useEffect(() => {
     const { coinId } = props.params;
