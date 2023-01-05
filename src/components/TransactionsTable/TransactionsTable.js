@@ -1,5 +1,4 @@
 import React from "react";
-import { TransactionsData } from "./TransactionsData";
 import { FaCheckSquare } from "react-icons/fa";
 import {
   TransactionsTableContainer,
@@ -10,8 +9,7 @@ import {
   TransactionsTableTD,
 } from "./TransactionsTable.styles";
 
-const TransactionsTable = () => {
-  const transactions = TransactionsData;
+const TransactionsTable = ({ transactions }) => {
   const txStatus = (status) => {
     switch (status) {
       case "Complete":
@@ -65,12 +63,14 @@ const TransactionsTable = () => {
               })}
             </TransactionsTableTD>
             <TransactionsTableTD>
-              <div className={ transaction.gainLossPercent > 0 ? 'green' : 'red'}>
-              $
-              {transaction.gainLossFiat.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-              })}{" "}
-              ({transaction.gainLossPercent}%)
+              <div
+                className={transaction.gainLossPercent > 0 ? "green" : "red"}
+              >
+                $
+                {transaction.gainLossFiat.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                })}{" "}
+                ({transaction.gainLossPercent}%)
               </div>
             </TransactionsTableTD>
             <TransactionsTableTD>
@@ -78,7 +78,9 @@ const TransactionsTable = () => {
                 {transaction.txStatus}
               </div>
             </TransactionsTableTD>
-            <TransactionsTableTD>{transaction.dateTimeBought}</TransactionsTableTD>
+            <TransactionsTableTD>
+              {transaction.dateTimeBought}
+            </TransactionsTableTD>
           </TransactionsTableRow>
         ))}
       </TransactionsTableBody>
