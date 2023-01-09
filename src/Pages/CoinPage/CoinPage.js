@@ -12,6 +12,7 @@ import { changeSelectedCoin } from "store/getChartsData/actions";
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
 }
+
 const CoinPage = (props) => {
   const dispatch = useDispatch();
   const coinData = useSelector((state) => state.coinData.coinData);
