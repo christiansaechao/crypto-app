@@ -5,6 +5,7 @@ import {
   GET_COINS_PENDING,
   GET_COINS_ERROR,
   INC_PAGE_NUM,
+  GET_COIN_LIST
 } from "./getCoinsDataReducer";
 
 export const getCoinsData = () => async (dispatch, getState) => {
@@ -53,3 +54,11 @@ export const incPageNum = () => (dispatch, getState) => {
   });
   dispatch(getMoreCoins());
 };
+
+export const getCoinList = () => async (dispatch, getState) => {
+  const { data } = await axios('https://api.coingecko.com/api/v3/coins/list?include_platform=false');
+  dispatch({
+    type: GET_COIN_LIST,
+    payload: data
+  })
+}; 

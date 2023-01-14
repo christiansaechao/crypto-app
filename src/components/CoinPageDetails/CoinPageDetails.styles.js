@@ -6,15 +6,15 @@ export const MainContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    display: flex;
-    gap: 15px;
-`; 
+  display: flex;
+  gap: 15px;
+`;
 
 export const DetailsContainer = styled.div`
   color: ${(props) => props.theme.textColor};
   display: flex;
   width: 100%;
-  margin: 40px 0;
+  margin-top: 40px;
   gap: 15px;
 `;
 
@@ -30,11 +30,11 @@ export const SmallDetail = styled.div`
   padding: 10px;
 
   & .inner-detail-container {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1.3rem, 1.5rem);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
   }
 
   & .circulating {
@@ -60,29 +60,30 @@ export const BackgroundChange = styled.div`
 export const MiddleDetailsContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  height: 40vh;
+  gap: 180px;
+  height: 338px;
+  margin-top: 60px; 
 `;
 
 export const LeftContainer = styled.div`
   color: ${(props) => props.theme.textColor};
-  width: 30%;
-  height: 30vh;
+  height: 100%;
+  width: 530px; 
 `;
 
 export const CoinRank = styled.div`
   border-bottom: 1px solid #b1b7c9;
-  width: 50%; 
-  font-size: .9rem;
+  font-size: 0.9rem;
   text-align: center;
 `;
 export const CoinImage = styled.img`
-  padding: 20px;
-  background: ${(props) => props.theme.greyText}; 
+  padding: 10px;
+  background: ${(props) => props.theme.greyText};
   width: 40px;
-  border-radius: 6px; 
+  height: 40px;
+  border-radius: 4px;
 `;
 export const BlockchainType = styled.div`
   font-size: 0.9rem;
@@ -90,52 +91,82 @@ export const BlockchainType = styled.div`
   font-weight: 400;
 `;
 export const CoinName = styled.div`
-    font-size: 1.5rem;
-    font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 400;
 `;
-export const ContractAddress = styled.div`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 90%;
-  padding: 2px 10px;
-  transition: all 0.2s ease-in-out;
-  border-radius: 10px;
-  border: 1px solid transparent;
 
-  &:hover {
-    cursor: pointer;
-    border: 1px solid #e1e1e1;
-    background: ${(props) => props.theme.main};
-  }
+export const Symbol = styled.div`
+  color: #a2a2a2;
 `;
 
 export const CoinPrice = styled.div`
-  font-size: 3.5rem;
+  font-size: 3rem;
   display: flex;
+  justify-content: center;
   align-items: center;
-
-  & span {
-    margin-right: 10px;
-  }
+  gap: 10px;
 `;
 
-export const DescriptionContainer = styled.div`
-  width: 70%;
-  margin: 0 auto;
-  color: ${(props) => props.theme.textColor};
-  text-align: center;
-  height: 30vh;
+export const ContractAddressContainer = styled.div`
+  color: #a2a2a2;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  & a {
-    text-decoration: none;
-    color: orange;
+export const ContractAddress = styled.div`
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  &:hover {
+    cursor: pointer;
+    color: ${(props) => props.theme.orange};
   }
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+`;
+export const Tags = styled.div`
+  font-size: 10px;
+  margin-top: 30px;
+`;
+export const TagsInnerContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 27px;
+`;
+export const Tag = styled.div`
+  border-radius: 15px;
+  text-align: center;
+  background: #272727;
+  font-size: 0.6rem;
+  padding: 10px;
+`;
 
-  &::-webkit-scrollbar {
-    display: none;
+export const RightContainer = styled.div`
+  width: 70%;
+  height: 100%; 
+  color: ${props => props.theme.textColor}; 
+`;
+
+export const OtherCoins = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #272727;
+  height: 290px;
+  padding: 24px 0; 
+
+  & div:not(:last-child){
+    height: 100%;
+    border-right: 1px solid #272727; 
   }
 `;

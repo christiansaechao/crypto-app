@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import CoinPageChart from '../../components/CoinPageChart/CoinPageChart'; 
 import CoinPageDetails from "components/CoinPageDetails/CoinPageDetails";
 import CurrencyConverter from "components/CurrencyConverter/CurrencyConverter";
-import { MainContainer } from './CoinPage.styles'; 
+import { MainContainer, DescriptionContainer } from './CoinPage.styles'; 
 import { changeSelectedCoin } from "store/getChartsData/actions";
 
 
@@ -44,6 +44,9 @@ const CoinPage = (props) => {
               selectedCurrency={selectedCurrency}
             />
             <CoinPageChart chartsData={chartsData}/>
+            <DescriptionContainer
+            dangerouslySetInnerHTML={{ __html: coinData.description.en }}
+          />
           </MainContainer>
         )}
       </>

@@ -1,16 +1,19 @@
+/* eslint-disable import/no-anonymous-default-export */
 const initialState = {
   data: [],
   coinsPerPage: 20,
   pageNum: 1,
   isLoading: false, 
-  error: false, 
+  error: false,
+  coinList: []
 };
 
 export const GET_COINS_PENDING = "GET_COINS_PENDING";
 export const GET_COINS_SUCCESS = 'GET_COINS_SUCCESS'; 
 export const GET_MORE_COINS = 'GET_MORE_COINS'; 
 export const GET_COINS_ERROR = 'GET_COINS_ERROR'; 
-export const INC_PAGE_NUM = 'INC_PAGE_NUM'; 
+export const INC_PAGE_NUM = 'INC_PAGE_NUM';
+export const GET_COIN_LIST = 'GET_COIN_LIST'; 
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -41,6 +44,11 @@ export default (state = initialState, action) => {
       return{
         ...state,
         data: [...state.data, ...action.payload]
+      }
+    case GET_COIN_LIST: 
+      return{
+        ...state,
+        coinList: [...action.payload]
       }
     default:
       return state;
