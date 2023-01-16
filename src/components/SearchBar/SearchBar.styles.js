@@ -25,7 +25,7 @@ export const SearchContainer = styled.form`
   align-items: center;
   border-radius: 10px;
   height: 60%;
-  border: 3px solid ${(props) => props.theme.greyText};
+  border: 1px solid ${(props) => props.theme.greyText};
 `;
 export const SearchIcon = styled.img`
   height: 15px;
@@ -75,3 +75,10 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.textColor};
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 40px;
+`

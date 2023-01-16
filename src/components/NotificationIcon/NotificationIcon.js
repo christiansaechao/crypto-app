@@ -1,8 +1,10 @@
 import React from 'react'
+import {FaBell} from 'react-icons/fa'
+import { IconContainer } from './NotificationIcon.styles'; 
 
 const NotificationIcon = () => {
   return (
-    <div>NotificationIcon</div>
+    <IconContainer><FaBell /></IconContainer>
   )
 }
 

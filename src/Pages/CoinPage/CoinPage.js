@@ -8,6 +8,7 @@ import CurrencyConverter from "components/CurrencyConverter/CurrencyConverter";
 import { MainContainer, DescriptionContainer } from './CoinPage.styles'; 
 import { changeSelectedCoin } from "store/getChartsData/actions";
 import { getCoinList } from "store/getCoinsData/actions";
+import Voting from "components/Voting/Voting";
 
 
 function withParams(Component) {
@@ -21,9 +22,9 @@ const CoinPage = (props) => {
   const selectedCurrency = useSelector((state) => state.currency.selectedCurrency);
   const coinList = useSelector((state) =>
   state.coinsData.coinList); 
+  const {coinId} = props.params;
 
   useEffect(() => {
-    const {coinId} = props.params;
     dispatch(changeSelectedCoin(coinId)); 
     dispatch(getCoinData(coinId));
     dispatch(getCoinList(coinId)); 
@@ -48,6 +49,7 @@ const CoinPage = (props) => {
               coinData={coinData}
               selectedCurrency={selectedCurrency}
             />
+            <Voting coinId={coinId} />
             <CoinPageChart chartsData={chartsData}/>
             <DescriptionContainer
             dangerouslySetInnerHTML={{ __html: coinData.description.en }}

@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const OtherCoinsContainer = styled.div`
-  width: 100%;
+  width: 70%;
   height: 338px;
   font-size: 1.5rem;
   color: ${(props) => props.theme.textColor};
-
   & .learn {
     font-size: 10px;
     color: #a2a2a2;
@@ -34,20 +33,18 @@ export const OtherCoinList = styled.div`
 `;
 
 export const Coin = styled.div`
-  height: 100%;
   width: 100%;
   font-size: 0.8rem;
 `;
 
 export const Image = styled.img`
-  width: 80px;
-  height: 80px;
-  padding: 21px;
+  width: 60px;
+  height: 60px;
   border-radius: 5px;
 `;
 
 export const Name = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 `;
 
 export const Symbol = styled.h3`
@@ -69,4 +66,10 @@ export const StyledLink = styled(Link)`
   justify-content: center;
   text-decoration: none;
     color: ${(props) => props.theme.textColor};
+`;
+
+export const BackgroundChange = styled.div`
+  color: ${(props) => (props.textColor ? "green" : "red")};
+  font-size: 0.8rem;
+  display: inline;
 `;

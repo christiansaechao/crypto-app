@@ -20,41 +20,41 @@ const Images = [
         text: "Overview",
         link: "/"
     },
-    {
-        img: Wallet,
-        text: "Wallet",
-        link: "/wallet"
-    },
-    {
-        img: Document,
-        text: "News",
-        link: "/news"
-    },
-    {
-        img: Chart,
-        text: "Market",
-        link: "/market"
-    },
-    {
-        img: Profile,
-        text: "Account",
-        link: "/account"
-    },
+    // {
+    //     img: Wallet,
+    //     text: "Wallet",
+    //     link: "/wallet"
+    // },
+    // {
+    //     img: Document,
+    //     text: "News",
+    //     link: "/news"
+    // },
+    // {
+    //     img: Chart,
+    //     text: "Market",
+    //     link: "/market"
+    // },
+    // {
+    //     img: Profile,
+    //     text: "Account",
+    //     link: "/account"
+    // },
     {
         img: Square,
         text: "Transactions",
         link: "/transactions"
     },
-    {
-        img: Star,
-        text: "Portfolio",
-        link: "/portfolio"
-    },
-    {
-        img: Setting,
-        text: "Settings",
-        link: "/settings"
-    },
+    // {
+    //     img: Star,
+    //     text: "Portfolio",
+    //     link: "/portfolio"
+    // },
+    // {
+    //     img: Setting,
+    //     text: "Settings",
+    //     link: "/settings"
+    // },
 ]
 
 export default Images; 

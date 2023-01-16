@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   padding: 30px 20px 40px 20px;
   border-radius: 10px;
   background: ${(props) => props.theme.main};
-  border: 2px solid ${(props) => props.theme.greyText};
+  border: 1px solid ${(props) => props.theme.greyText};
 `;
 
 export const DropdownsContainer = styled.div`

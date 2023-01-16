@@ -6,12 +6,12 @@ text-decoration: none;
 color: ${(props) => props.theme.textColor};
 background-color: ${(props) => props.theme.orange}; 
 border-radius: 2px;
-height: 60%; 
+height: 100%; 
 display: flex; 
 justify-content: center; 
 align-items: center;
 font-size: .9rem;
-padding: 2px 20px;
+padding: 7px 20px;
 
 &:visited { 
     text-decoration: none; 

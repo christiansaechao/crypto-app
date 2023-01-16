@@ -9,10 +9,11 @@ import {
   Name,
   Symbol,
   Price,
+  BackgroundChange,
 } from "./OtherCoins.styles";
 
-const OtherCoins = ({coinList}) => {
-    console.log(coinList); 
+const OtherCoins = ({ coinList }) => {
+  console.log(coinList);
   const decimalCheck = (number) =>
     number < 1 ? number : number.toLocaleString();
   return (
@@ -31,7 +32,12 @@ const OtherCoins = ({coinList}) => {
                   <Name>{coin.name}</Name>
                   <Symbol>{coin.symbol}</Symbol>
                   <Price>${decimalCheck(coin.current_price)}</Price>
-                  {coin.price_change_percentage_24h_in_currency}
+                  <BackgroundChange textColor={coin.price_change_percentage_24h_in_currency > 0}>
+                    {decimalCheck(
+                      coin.price_change_percentage_24h_in_currency.toFixed(2)
+                    )}
+                    %
+                  </BackgroundChange>
                 </StyledLink>
               </Coin>
             );

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from 'react-router-dom'; 
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -63,9 +62,8 @@ export const MiddleDetailsContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between; 
-  align-items: center;
-  gap: 20px;
-  height: 40vh;
+  align-items: start;
+  gap: 80px;
 `;
 
 export const LeftContainer = styled.div`
@@ -81,15 +79,17 @@ export const CoinRank = styled.div`
   text-align: center;
 `;
 export const CoinImage = styled.img`
-  padding: 20px;
+  padding: 15px;
   background: ${(props) => props.theme.greyText}; 
-  width: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 6px; 
 `;
 export const BlockchainType = styled.div`
   font-size: 0.9rem;
   text-transform: capitalize;
   font-weight: 400;
+  padding-left: 10px; 
 `;
 export const CoinName = styled.div`
     font-size: 1.5rem;
@@ -107,19 +107,17 @@ export const ContractAddress = styled.div`
 
   &:hover {
     cursor: pointer;
-    border: 1px solid #e1e1e1;
-    background: ${(props) => props.theme.main};
+    color: ${(props) => props.theme.orange};
   }
 `;
 
 export const CoinPrice = styled.div`
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   display: flex;
   align-items: center;
-
-  & span {
-    margin-right: 10px;
-  }
+  width: 100%; 
+  margin: 0 18%;
+  gap: 10px;
 `;
 
 export const DescriptionContainer = styled.div`
@@ -140,4 +138,24 @@ export const DescriptionContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+export const Tags = styled.div`
+  font-size: 10px;
+  margin-top: 20px;
+  width: 100%;
+  height: 80px;
+`;
+export const TagsInnerContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+`;
+export const Tag = styled.div`
+  border-radius: 15px;
+  text-align: center;
+  background: #272727;
+  font-size: 0.6rem;
+  padding: 6px 15px;
 `;

@@ -10,6 +10,7 @@ import {
   ResultItems,
   StyledLink,
   Wrapper,
+  ButtonContainer
 } from "./SearchBar.styles";
 import LoginButton from "components/LoginButton/LoginButton";
 import NotificationIcon from "components/NotificationIcon/NotificationIcon";
@@ -17,16 +18,16 @@ import icon from "../../images/Search.png";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const coins = useSelector((state) => state.searchBarData.coins); 
+  const coins = useSelector((state) => state.searchBarData.coins);
   const [value, setValue] = useState("");
 
-  useEffect(()=> {
-    dispatch(getSearchbarData(value)); 
-  }, [value])
+  useEffect(() => {
+    dispatch(getSearchbarData(value));
+  }, [value]);
 
   const resetSearchbar = () => {
-    setValue(''); 
-  }
+    setValue("");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,14 +50,21 @@ const SearchBar = () => {
             <SearchResults>
               {coins.map((coin) => (
                 <ResultItems key={coin.id}>
-                  <StyledLink onClick={() => resetSearchbar()} to={`coin/${coin.id}`}>{coin?.id}</StyledLink>
+                  <StyledLink
+                    onClick={() => resetSearchbar()}
+                    to={`coin/${coin.id}`}
+                  >
+                    {coin?.id}
+                  </StyledLink>
                 </ResultItems>
               ))}
             </SearchResults>
           )}
         </MainContainer>
-        <LoginButton />
-        <NotificationIcon />
+        <ButtonContainer>
+          <LoginButton />
+          <NotificationIcon />
+        </ButtonContainer>
       </Wrapper>
     </>
   );

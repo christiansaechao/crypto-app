@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import {
   DetailsContainer,
   LeftContainer,
@@ -15,18 +15,21 @@ import {
   DetailName,
   MiddleDetailsContainer,
   Wrapper,
-  
+  Tags,
+  TagsInnerContainer,
+  Tag,
 } from "./CoinPageDetails.styles";
 import { FaCopy } from "react-icons/fa";
-import OtherCoins from "OtherCoins/OtherCoins";
+import OtherCoins from "components/OtherCoins/OtherCoins";
+import Voting from "components/Voting/Voting";
 
 const CoinPageDetails = ({ coinData }) => {
   const selectedCurrency = useSelector((state) =>
     state.currency.selectedCurrency.toLowerCase()
   );
-  const coinList = useSelector((state) =>
-    state.coinsData.coinList); 
-
+  const coinList = useSelector((state) => state.coinsData.coinList);
+  const decimalCheck = (number) =>
+    number < 1 ? number : number.toLocaleString();
   return (
     <>
       <MainContainer>
@@ -119,13 +122,16 @@ const CoinPageDetails = ({ coinData }) => {
             <Wrapper>
               <CoinImage src={coinData.image.large} />
               <CoinName>
-                {coinData.name} ({coinData.symbol})
+                {coinData.name} ({coinData.symbol.toUpperCase()})
                 <CoinRank>Rank #{coinData.market_cap_rank}</CoinRank>
               </CoinName>
             </Wrapper>
             <CoinPrice>
               <span>
-                ${coinData.market_data.current_price[selectedCurrency]}
+                $
+                {decimalCheck(
+                  coinData.market_data.current_price[selectedCurrency]
+                )}
               </span>
               <BackgroundChange
                 textColor={
@@ -134,9 +140,11 @@ const CoinPageDetails = ({ coinData }) => {
                   ] > 0
                 }
               >
-                {coinData.market_data.price_change_percentage_24h_in_currency[
-                  selectedCurrency
-                ].toFixed(2)}
+                {decimalCheck(
+                  coinData.market_data.price_change_percentage_24h_in_currency[
+                    selectedCurrency
+                  ]
+                )}
                 %
               </BackgroundChange>
             </CoinPrice>
@@ -157,8 +165,16 @@ const CoinPageDetails = ({ coinData }) => {
             ) : (
               <div></div>
             )}
+            <Tags>
+              Tags
+              <TagsInnerContainer>
+                {coinData.categories.slice(0, 6).map((category) => {
+                  return <Tag key={category}>{category}</Tag>;
+                })}
+              </TagsInnerContainer>
+            </Tags>
           </LeftContainer>
-        {coinList !== null && <OtherCoins coinList={coinList} />}
+          {coinList !== null && <OtherCoins coinList={coinList} />}
         </MiddleDetailsContainer>
       </MainContainer>
     </>
