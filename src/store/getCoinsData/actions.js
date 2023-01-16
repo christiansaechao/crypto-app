@@ -55,10 +55,20 @@ export const incPageNum = () => (dispatch, getState) => {
   dispatch(getMoreCoins());
 };
 
-export const getCoinList = () => async (dispatch, getState) => {
-  const { data } = await axios('https://api.coingecko.com/api/v3/coins/list?include_platform=false');
+export const getCoinList = (coinId) => async (dispatch, getState) => {
+  const state = getState(); 
+  const { data } = await axios(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${state.currency.selectedCurrency}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`);
+  const randomIndexes = [];
+  for (let i = 0; i < 3; i++) {
+    const randCoin = data.splice(
+      Math.floor(Math.random() * data.length),
+      1
+    )[0];
+    if (randCoin.id !== coinId) randomIndexes.push(randCoin);
+  }
+  const newData = randomIndexes; 
   dispatch({
     type: GET_COIN_LIST,
-    payload: data
+    payload: newData
   })
 }; 

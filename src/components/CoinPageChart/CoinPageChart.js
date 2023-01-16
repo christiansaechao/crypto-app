@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeChartType, changeDateRange } from "store/getChartsData/actions";
-import { getChartsData } from "store/getChartsData/actions";
+import { changeChartType, changeDateRange, getChartsData } from "store/getChartsData/actions";
 import Chart from "../LandingPageCharts/Chart/Chart";
 
 import {
@@ -37,27 +36,17 @@ const CoinPageChart = ({ chartsData }) => {
     setLeftButtons({ volume: !leftButtons.volume, price: !leftButtons.price });
   };
 
+  const dateRangeToRightButtons = {
+    1: {day: true, week: false, month: false, threeMonths: false, year: false},
+    7: {day: false, week: true, month: false, threeMonths: false, year: false},
+    30: {day: false, week: false, month: true, threeMonths: false, year: false},
+    90: {day: false, week: false, month: false, threeMonths: true, year: false},
+    365: {day: false, week: false, month: false, threeMonths: false, year: true}
+  }
+
   const changeDate = (dateRange) => {
     dispatch(changeDateRange(dateRange));
-    switch(dateRange){
-      case 1: 
-        setRightButtons({day: true, week: false, month: false, threeMonths: false, year: false});
-        break; 
-      case 7: 
-        setRightButtons({day: false, week: true, month: false, threeMonths: false, year: false});
-        break; 
-      case 30: 
-        setRightButtons({day: false, week: false, month: true, threeMonths: false, year: false});
-        break;
-      case 90: 
-        setRightButtons({day: false, week: false, month: false, threeMonths: true, year: false});
-        break;
-      case 365: 
-        setRightButtons({day: false, week: false, month: false, threeMonths: false, year: true});
-        break;
-      default: 
-        return null; 
-    }
+    setRightButtons(dateRangeToRightButtons[dateRange]);
   };
 
   return (

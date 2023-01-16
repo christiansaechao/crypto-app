@@ -1,20 +1,22 @@
 import styled from "styled-components";
+import Link from 'react-router-dom'; 
 
 export const MainContainer = styled.div`
   width: 100%;
   margin: 0 auto;
+  height: 70vh; 
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  gap: 15px;
-`;
+    display: flex;
+    gap: 15px;
+`; 
 
 export const DetailsContainer = styled.div`
   color: ${(props) => props.theme.textColor};
   display: flex;
   width: 100%;
-  margin-top: 40px;
+  margin: 40px 0;
   gap: 15px;
 `;
 
@@ -30,11 +32,11 @@ export const SmallDetail = styled.div`
   padding: 10px;
 
   & .inner-detail-container {
-    font-size: clamp(1rem, 1.3rem, 1.5rem);
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
   }
 
   & .circulating {
@@ -60,30 +62,29 @@ export const BackgroundChange = styled.div`
 export const MiddleDetailsContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
-  gap: 180px;
-  height: 338px;
-  margin-top: 60px; 
+  gap: 20px;
+  height: 40vh;
 `;
 
 export const LeftContainer = styled.div`
   color: ${(props) => props.theme.textColor};
-  height: 100%;
-  width: 530px; 
+  width: 30%;
+  height: 30vh;
 `;
 
 export const CoinRank = styled.div`
   border-bottom: 1px solid #b1b7c9;
-  font-size: 0.9rem;
+  width: 50%; 
+  font-size: .9rem;
   text-align: center;
 `;
 export const CoinImage = styled.img`
-  padding: 10px;
-  background: ${(props) => props.theme.greyText};
+  padding: 20px;
+  background: ${(props) => props.theme.greyText}; 
   width: 40px;
-  height: 40px;
-  border-radius: 4px;
+  border-radius: 6px; 
 `;
 export const BlockchainType = styled.div`
   font-size: 0.9rem;
@@ -91,82 +92,52 @@ export const BlockchainType = styled.div`
   font-weight: 400;
 `;
 export const CoinName = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.5rem;
-  font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 400;
 `;
-
-export const Symbol = styled.div`
-  color: #a2a2a2;
-`;
-
-export const CoinPrice = styled.div`
-  font-size: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
-export const ContractAddressContainer = styled.div`
-  color: #a2a2a2;
-  margin-top: 60px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const ContractAddress = styled.div`
-  color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 90%;
+  padding: 2px 10px;
   transition: all 0.2s ease-in-out;
   border-radius: 10px;
   border: 1px solid transparent;
+
   &:hover {
     cursor: pointer;
-    color: ${(props) => props.theme.orange};
+    border: 1px solid #e1e1e1;
+    background: ${(props) => props.theme.main};
   }
 `;
-export const Tags = styled.div`
-  font-size: 10px;
-  margin-top: 30px;
-`;
-export const TagsInnerContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 27px;
-`;
-export const Tag = styled.div`
-  border-radius: 15px;
-  text-align: center;
-  background: #272727;
-  font-size: 0.6rem;
-  padding: 10px;
-`;
 
-export const RightContainer = styled.div`
-  width: 70%;
-  height: 100%; 
-  color: ${props => props.theme.textColor}; 
-`;
-
-export const OtherCoins = styled.div`
+export const CoinPrice = styled.div`
+  font-size: 3.5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border: 1px solid #272727;
-  height: 290px;
-  padding: 24px 0; 
 
-  & div:not(:last-child){
-    height: 100%;
-    border-right: 1px solid #272727; 
+  & span {
+    margin-right: 10px;
+  }
+`;
+
+export const DescriptionContainer = styled.div`
+  width: 70%;
+  margin: 0 auto;
+  color: ${(props) => props.theme.textColor};
+  text-align: center;
+  height: 30vh;
+
+  & a {
+    text-decoration: none;
+    color: orange;
+  }
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
