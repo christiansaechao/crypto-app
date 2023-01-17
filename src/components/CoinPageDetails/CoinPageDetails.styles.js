@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MainContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  height: 70vh; 
+  height: 70vh;
 `;
 
 export const Wrapper = styled.div`

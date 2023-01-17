@@ -35,6 +35,9 @@ const CoinsTable = ({ coinsData }) => {
     filterData.sort((a, b) => a[filter] - b[filter]);
   }
 
+  const decimalCheck = (number) =>
+  number < 1 ? number : number.toLocaleString();
+
   return (
     <>
       {coinsData && (
@@ -111,7 +114,7 @@ const CoinsTable = ({ coinsData }) => {
                       </StyledLink>
                     </CenterElements>
                   </CoinsTableTD>
-                  <CoinsTableTD>${coin.current_price}</CoinsTableTD>
+                  <CoinsTableTD>${decimalCheck(coin.current_price)}</CoinsTableTD>
                   <CoinsTableTD>
                     <CenterElements
                       className="percentage"

@@ -21,9 +21,9 @@ const SearchBar = () => {
   const coins = useSelector((state) => state.searchBarData.coins);
   const [value, setValue] = useState("");
 
-  useEffect(() => {
-    dispatch(getSearchbarData(value));
-  }, [value]);
+  // useEffect(() => {
+  //   dispatch(getSearchbarData(value));
+  // }, [value]);
 
   const resetSearchbar = () => {
     setValue("");
@@ -31,6 +31,7 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(getSearchbarData(value));
   };
 
   return (

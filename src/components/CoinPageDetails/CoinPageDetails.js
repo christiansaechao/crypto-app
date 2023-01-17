@@ -21,7 +21,6 @@ import {
 } from "./CoinPageDetails.styles";
 import { FaCopy } from "react-icons/fa";
 import OtherCoins from "components/OtherCoins/OtherCoins";
-import Voting from "components/Voting/Voting";
 
 const CoinPageDetails = ({ coinData }) => {
   const selectedCurrency = useSelector((state) =>
@@ -29,7 +28,12 @@ const CoinPageDetails = ({ coinData }) => {
   );
   const coinList = useSelector((state) => state.coinsData.coinList);
   const decimalCheck = (number) =>
-    number < 1 ? number : number.toLocaleString();
+    number < 1
+      ? number
+      : number.toLocaleString(undefined, {
+          minimumFractionDigit: 2,
+          maximumFractionDigit: 2,
+        });
   return (
     <>
       <MainContainer>
@@ -37,7 +41,7 @@ const CoinPageDetails = ({ coinData }) => {
           <SmallDetail>
             <DetailName>All Time Low</DetailName>
             <div className="inner-detail-container">
-              ${coinData.market_data.atl[selectedCurrency]}
+              ${decimalCheck(coinData.market_data.atl[selectedCurrency])}
               <BackgroundChange
                 textColor={
                   coinData.market_data.atl_change_percentage[selectedCurrency] >
@@ -54,7 +58,7 @@ const CoinPageDetails = ({ coinData }) => {
           <SmallDetail>
             <DetailName>All Time High</DetailName>
             <div className="inner-detail-container">
-              ${coinData.market_data.ath[selectedCurrency]}
+              ${decimalCheck(coinData.market_data.ath[selectedCurrency])}
               <BackgroundChange
                 textColor={
                   coinData.market_data.ath_change_percentage[selectedCurrency] >
@@ -140,11 +144,11 @@ const CoinPageDetails = ({ coinData }) => {
                   ] > 0
                 }
               >
-                {decimalCheck(
+                {
                   coinData.market_data.price_change_percentage_24h_in_currency[
                     selectedCurrency
-                  ]
-                )}
+                  ].toFixed(2)
+                }
                 %
               </BackgroundChange>
             </CoinPrice>

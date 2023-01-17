@@ -2,12 +2,12 @@ import styled, {createGlobalStyle} from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle `
     body{
-        margin: 0; 
         box-sizing: border-box; 
         font-family: 'Poppins', sans-serif;
         width: 100%;
         margin: 0 auto; 
-        background: ${props => props.theme.main}
+        background: ${props => props.theme.main}; 
+        margin-bottom: 30px; 
     }
 `;
 

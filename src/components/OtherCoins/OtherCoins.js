@@ -13,7 +13,6 @@ import {
 } from "./OtherCoins.styles";
 
 const OtherCoins = ({ coinList }) => {
-  console.log(coinList);
   const decimalCheck = (number) =>
     number < 1 ? number : number.toLocaleString();
   return (
