@@ -12,7 +12,7 @@ export default class Navbar extends Component {
         {/* <Icon src={LogoImage} /> */}
         <Links />
         <CurrencySelector handleCurrencyChange={handleCurrencyChange} />
-        <ThemeChanger handleThemeChange={handleThemeChange} />
+        {/* <ThemeChanger handleThemeChange={handleThemeChange} /> */}
       </NavbarContainer>
     );
   }
